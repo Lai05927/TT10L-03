@@ -5,8 +5,8 @@ root.title('Level 4')
 root.geometry("1280x720")
 
 # Load background image
-image_path = "C:/CSP1123/Project/background storyline 4(3).png"
-bg_image = tk.PhotoImage(file=image_path)
+image_path = tk.PhotoImage(file=r"C:/CSP1123/Project/background storyline 4(3).png")
+bg_image =image_path
 
 # Create canvas
 canvas = tk.Canvas(root, width=1280, height=720)
