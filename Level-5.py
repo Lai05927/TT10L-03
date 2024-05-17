@@ -5,7 +5,6 @@ root = tk.Tk()
 root.title("Level 1")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
-print(screen_width,screen_height)
 root.geometry(f"{screen_width}x{screen_height}")
 root.state('zoomed')
 
