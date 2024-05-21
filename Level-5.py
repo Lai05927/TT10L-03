@@ -14,6 +14,15 @@ canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
 canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_photo)
 
+def home(event):
+    subprocess.Popen(["python","Index.py"])
+    root.destroy()
+
+home_image = (Image.open("Home.png")).resize((45,45))
+home_image_tk = ImageTk.PhotoImage(home_image)
+home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, image=home_image_tk)
+canvas.tag_bind(home_button, "<Button-1>", home)
+
 def open_hall_window(event):
     subprocess.Popen(["python", "Level_5/Hall.py"])
     root.destroy()
