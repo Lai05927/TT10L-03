@@ -18,7 +18,7 @@ def home(event):
     subprocess.Popen(["python","Index.py"])
     room_window.destroy()
 
-home_image = (Image.open("Home.png")).resize((45,45))
+home_image = (Image.open("Image/Home.png")).resize((45,45))
 home_image_tk = ImageTk.PhotoImage(home_image)
 home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, image=home_image_tk)
 canvas.tag_bind(home_button, "<Button-1>", home)
@@ -27,7 +27,7 @@ def back(event):
     subprocess.Popen(["python","Level-5.py"])
     room_window.destroy()
 
-back_image = (Image.open("Back.png")).resize((45,45))
+back_image = (Image.open("Image/Back.png")).resize((45,45))
 back_image_tk = ImageTk.PhotoImage(back_image)
 back_button = canvas.create_image(80/1280*screen_width, 30/720*screen_height, image=back_image_tk)
 canvas.tag_bind(back_button, "<Button-1>", back)
