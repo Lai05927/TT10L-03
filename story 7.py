@@ -37,6 +37,7 @@ opening_label = tk.Label(root, text=opening_text, font=("Arial", 20), bg="white"
 opening_label.pack()
 
 
+#text animation
 def animate_title():
     #这段代码的作用是逐步将 title_txt 中的字符添加到 title_text 中，并将 title_text 设置为 title_label 的文本内容，然后增加 title_count，直到 title_count 的值等于 title_txt 的长度为止。
 
@@ -57,6 +58,7 @@ def slider():
         opening_label.config(text=opening_text)
         opening_count += 1
         root.after(100, slider)
+        
 
 #button
 
