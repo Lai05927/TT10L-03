@@ -3,10 +3,6 @@ import tkinter as tk
 import subprocess
 
 
-def open_clues_window():
-    # Function to open clues window
-    pass
-
 def go_to_home():
     # Function to return to home screen
     pass
@@ -26,20 +22,6 @@ bg_photo = ImageTk.PhotoImage(bg_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
 canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_photo)
-
-#new window
-def open_clues_window():
-    global clues_bg_photo
-    new_window = tk.Toplevel(root)
-    new_window.title("Clues")
-    new_window.geometry(root.geometry())
-    
-
-
-    clues_bg_photo = tk.PhotoImage(file="Level 1/Level 1 image/clues_image.png")
-    clues_background_Label = tk.Label(new_window, image=clues_bg_photo, width=1280, height=720)
-    clues_background_Label.place(x=0, y=0, relwidth=1, relheight=1)
-    clues_background_Label.image = clues_bg_photo
 
 
 # Level 7 Title
@@ -66,8 +48,7 @@ opening_lines = [
 
 opening_count = 0
 opening_text = ""
-opening_label = canvas.create_text(screen_width/2, screen_height/2, text=opening_text, font=("Arial", 20), fill="white")
-
+opening_label = canvas.create_text(screen_width/2, screen_height/2, text=opening_text, font=("Arial", 20), fill="white", width=screen_width-100)
 
 def animate_text():
     global opening_count, opening_text
@@ -82,11 +63,6 @@ def animate_text():
 
 animate_text()
 
-
-
-
-
-
 def home(event):
     subprocess.Popen(["python","Index.py"])
     root.destroy()
@@ -97,19 +73,18 @@ home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, an
 canvas.tag_bind(home_button, "<Button-1>",home)
 
 
-
-
 #button
 
-Question_btn=tk.Button(root, text="Question",font=('bold',24), command=open_clues_window)
-Question_btn.place(x=1100,y=500)
+
+def open_clues_window(event):
+    subprocess.Popen(["python","Level 1/clues.py"])
+    root.destroy()
+
+Question_btn = tk.Button(root, text="Question", font=('bold', 24))
+Question_btn.place(x=1100, y=500)
+Question_btn.bind("<Button-1>", open_clues_window)
+
 Answer_btn=tk.Button(root,text="Answer\n Question",font=('bold',24))
 Answer_btn.place(x=1100,y=580)
-    
-
-
-
 main_Frame=tk.Frame(root)
-
-
 root.mainloop()
