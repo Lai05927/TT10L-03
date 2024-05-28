@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import tkinter.messagebox as messagebox
 import subprocess
 room_window = tk.Tk()
 room_window.title("Room")
@@ -15,8 +16,9 @@ canvas.pack()
 canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_photo)
 
 def home(event):
-    subprocess.Popen(["python","Index.py"])
-    room_window.destroy()
+    if messagebox.askokcancel("Confirm", "Do you want to proceed to the home page? Your progress will not be saved."):
+        subprocess.Popen(["python", "Index.py"])
+        room_window.destroy()
 
 home_image = (Image.open("Image/Home.png")).resize((45,45))
 home_image_tk = ImageTk.PhotoImage(home_image)
