@@ -20,17 +20,18 @@ canvas.create_text(screen_width/2, screen_height/4, text=storyline, font=("Arial
 bottom_left_frame = tk.Frame(canvas, width=screen_width/2, height=screen_height/2, bg='', highlightthickness=0)
 canvas.create_window(0, screen_height/2, anchor='nw', window=bottom_left_frame)
 minigame_count=0
+texts = ['as', 'bi', 'cd']
 
 def proceed_to_minigame():
-    #subprocess.Popen(["python", "Level_5/Minigame.py"])
+    # subprocess.Popen(["python", "Level_5/Minigame.py"])
     global minigame_count
-    minigame_count += 1
-    if minigame_count <= 3:
-        canvas.itemconfigure(text_items[minigame_count - 1], state='normal')
+    if minigame_count < len(texts):
+        canvas.itemconfigure(text_items[minigame_count], state='normal')
+        minigame_count += 1
 
-text_items = ["1","2","3"]
-for i in range(3):
-    text_item = canvas.create_text(screen_width/4, screen_height/2 + (i * 50) + 50, text=f"(text_items{i+1})", font=("Arial", 24), fill="black", state='hidden')
+text_items = []
+for i, text in enumerate(texts):
+    text_item = canvas.create_text(screen_width/4, screen_height/2 + (i * 50) + 50, text=text, font=("Arial", 24), fill="black", state='hidden')
     text_items.append(text_item)
 
 minigame_button = tk.Button(bottom_left_frame, text="Proceed to Minigame", command=proceed_to_minigame, font=("Arial", 18))
