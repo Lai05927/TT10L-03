@@ -12,45 +12,18 @@ canvas.pack()
 script_box = None
 character_name_box = None
 text_widget = None
-selection_buttons = {}
+selection_buttons_main = []
+selection_buttons_sub = []
 return_button = None
 back_button = None
 character_name_text = None
 
-# Initial texts and character names for buttons
-button_data = {
-    "Main": {
-        "character_name": "Main Button",
-        "initial_text": "Hello! This is a character script box for Main.",
-        "options": ["Reynold", "Emberly", "Kiara"],
-        "script_texts": {
-            "Reynold": "I am Reynold",
-            "Emberly": "I am Emberly, Reynold's sister.",
-            "Kiara": "I am Kiara, Emberly's friend."
-        }
-    },
-    "Sub": {
-        "character_name": "Sub Button",
-        "initial_text": "Hello! This is a character script box for Sub.",
-        "options": ["Alice", "Bob", "Charlie"],
-        "script_texts": {
-            "Alice": "I am Alice",
-            "Bob": "I am Bob, Alice's brother.",
-            "Charlie": "I am Charlie, Bob's friend."
-        }
-    },
-    "Third": {
-        "character_name": "Third Button",
-        "initial_text": "Hello! This is a character script box for Third.",
-        "options": ["Rey", "Ember", "Kia"],
-        "script_texts": {
-            "Rey": "I am Rey",
-            "Emberly": "I am Ember, Rey's sister.",
-            "Kiara": "I am Kia, Ember's friend."
-        }
-    },
-    # Add more buttons here with their respective data
-}
+# Initial text and character name for Main and Sub
+initial_text_main = "Hello! This is a character script box for Main."
+character_name_main = "Main Button"
+
+initial_text_sub = "Hello! This is a character script box for Sub."
+character_name_sub = "Sub Button"
 
 def wrap_text(text, line_length):
     words = text.split()
@@ -98,41 +71,56 @@ def create_back_button(canvas, x, y):
     return button_window
 
 def on_option_click(option):
-    global selection_buttons, return_button, back_button
+    global selection_buttons_main, selection_buttons_sub, return_button, back_button
     # Update the text in the script box based on the selected option
-    character_name = canvas.itemcget(character_name_text, 'text')
-    script_texts = button_data[character_name]["script_texts"]
-    new_text = script_texts.get(option, "")
+    if option in ["Reynold", "Emberly", "Kiara"]:
+        if option == "Reynold":
+            new_text = "I am Reynold"
+        elif option == "Emberly":
+            new_text = "I am Emberly, Reynold's sister."
+        elif option == "Kiara":
+            new_text = "I am Kiara, Emberly's friend"
+    else:
+        if option == "Alice":
+            new_text = "I am Alice"
+        elif option == "Bob":
+            new_text = "I am Bob, Alice's brother."
+        elif option == "Charlie":
+            new_text = "I am Charlie, Bob's friend"
+    
     canvas.itemconfig(text_widget, text=wrap_text(new_text, 50))
     
     # Hide all selection buttons and back button
-    for button in selection_buttons.values():
+    for button in selection_buttons_main + selection_buttons_sub + [back_button]:
         canvas.itemconfig(button, state='hidden')
     
     # Show the return button
     canvas.itemconfig(return_button, state='normal')
 
 def on_return_click():
-    global selection_buttons, return_button, back_button
+    global selection_buttons_main, selection_buttons_sub, return_button, back_button
     # Restore the initial text
-    character_name = canvas.itemcget(character_name_text, 'text')
-    initial_text = button_data[character_name]["initial_text"]
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text, 50))
+    if canvas.itemcget(character_name_text, 'text') == character_name_main:
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_main, 50))
+    else:
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_sub, 50))
     
     # Hide the return button
     canvas.itemconfig(return_button, state='hidden')
     
     # Show the appropriate selection buttons
-    character_options = button_data[character_name]["options"]
-    for button in selection_buttons.values():
-        if canvas.itemcget(button, 'text') in character_options:
+    if canvas.itemcget(character_name_text, 'text') == character_name_main:
+        for button in selection_buttons_main:
+            canvas.itemconfig(button, state='normal')
+    else:
+        for button in selection_buttons_sub:
             canvas.itemconfig(button, state='normal')
     
     # Show the back button
     canvas.itemconfig(back_button, state='normal')
 
 def on_back_click():
-    global script_box, character_name_box, text_widget, character_name_text, selection_buttons, back_button
+    global script_box, character_name_box, text_widget, character_name_text, selection_buttons_main, selection_buttons_sub, back_button
     # Hide the back button
     canvas.itemconfig(back_button, state='hidden')
     
@@ -141,27 +129,24 @@ def on_back_click():
     canvas.itemconfig(character_name_text, state='hidden')  # Hide the character name text
     canvas.itemconfig(script_box, state='hidden')
     canvas.itemconfig(text_widget, state='hidden')
-    for button in selection_buttons.values():
+    for button in selection_buttons_main + selection_buttons_sub:
         canvas.itemconfig(button, state='hidden')
 
-def on_button_click(button_name):
-    global script_box, character_name_box, text_widget, character_name_text, selection_buttons, back_button
+def on_main_click():
+    global script_box, character_name_box, text_widget, character_name_text, selection_buttons_main, selection_buttons_sub, back_button
     # Show the script box, character name box, and text widget
     canvas.itemconfig(script_box, state='normal')
     canvas.itemconfig(character_name_box, state='normal')
     canvas.itemconfig(text_widget, state='normal')
-    canvas.itemconfig(character_name_text, text=button_data[button_name]["character_name"], state='normal')
+    canvas.itemconfig(character_name_text, text=character_name_main, state='normal')
     
-    # Show selection buttons for the button
-    options = button_data[button_name]["options"]
-    for button in selection_buttons[button_name]:
+    # Show main selection buttons
+    for button in selection_buttons_main:
         canvas.itemconfig(button, state='normal')
     
-    # Hide other selection buttons
-    for other_button_name, other_buttons in selection_buttons.items():
-        if other_button_name != button_name:
-            for other_button in other_buttons:
-                canvas.itemconfig(other_button, state='hidden')
+    # Hide sub selection buttons
+    for button in selection_buttons_sub:
+        canvas.itemconfig(button, state='hidden')
     
     # Show back button
     canvas.itemconfig(back_button, state='normal')
@@ -169,27 +154,54 @@ def on_button_click(button_name):
     # Hide return button
     canvas.itemconfig(return_button, state='hidden')
 
-    # Show initial text for button
-    initial_text = button_data[button_name]["initial_text"]
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text, 50))
+    # Show initial text for Main
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_main, 50))
 
-# Set positions for main, sub, and third buttons
-button_positions = {
-    "Main": (100, 130),
-    "Sub": (170, 80),
-    "Third": (220, 180),
-}
+def on_sub_click():
+    global script_box, character_name_box, text_widget, character_name_text, selection_buttons_main, selection_buttons_sub, back_button
+    # Show the script box, character name box, and text widget
+    canvas.itemconfig(script_box, state='normal')
+    canvas.itemconfig(character_name_box, state='normal')
+    canvas.itemconfig(text_widget, state='normal')
+    canvas.itemconfig(character_name_text, text=character_name_sub, state='normal')
+    
+    # Show sub selection buttons
+    for button in selection_buttons_sub:
+        canvas.itemconfig(button, state='normal')
+    
+    # Hide main selection buttons
+    for button in selection_buttons_main:
+        canvas.itemconfig(button, state='hidden')
+    
+    # Show back button
+    canvas.itemconfig(back_button, state='normal')
 
-# Create buttons based on button_data
-for button_name, (x, y) in button_positions.items():
-    button = tk.Button(root, text=button_name, command=lambda name=button_name: on_button_click(name))
-    canvas.create_window(x, y, anchor='nw', window=button)
-    selection_buttons[button_name] = create_text_selection_buttons(canvas, button_data[button_name]["options"], 400, 150)
+    # Hide return button
+    canvas.itemconfig(return_button, state='hidden')
 
-# Create the script box and back/return buttons
-create_script_box(canvas, "", "", 50, 300, 500, 80)
+    # Show initial text for Sub
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_sub, 50))
+
+# Create the Main button
+main_button = tk.Button(root, text="Main", command=on_main_click)
+canvas.create_window(200, 200, anchor='nw', window=main_button)
+
+# Create the Sub button
+sub_button = tk.Button(root, text="Sub", command=on_sub_click)
+canvas.create_window(300, 200, anchor='nw', window=sub_button)
+
+# Create the initial script box and selection buttons for Main
+create_script_box(canvas, character_name_main, initial_text_main, 50, 300, 500, 80)
+selection_buttons_main = create_text_selection_buttons(canvas, ["Reynold", "Emberly", "Kiara"], 400, 150)
+
+# Create the initial script box and selection buttons for Sub
+selection_buttons_sub = create_text_selection_buttons(canvas, ["Alice", "Bob", "Charlie"], 400, 150)
+
+# Create the return button but hide it initially
 return_button = create_return_button(canvas, 400, 150)
 canvas.itemconfig(return_button, state='hidden')
+
+# Create the back button but hide it initially
 back_button = create_back_button(canvas, 400, 250)
 canvas.itemconfig(back_button, state='hidden')
 
