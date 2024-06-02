@@ -56,6 +56,22 @@ back_btn = canvas.create_image(120,52,image=back_photo)
 canvas.tag_bind(back_btn,"<Button-1>",back)
 
 
+def hints(event):
+    subprocess.Popen(["python", "Level 1/hints.py"])
+    root.destroy()
+
+hints_image = Image.open("Image/hints btn.png").resize((70, 70))
+hints_image_tk = ImageTk.PhotoImage(hints_image)
+
+x = screen_width - 30 - hints_image_tk.width()  
+y = 30  
+
+hints_button = canvas.create_image(x, y, anchor="nw", image=hints_image_tk)
+
+canvas.tag_bind(hints_button, "<Button-1>", hints)
+
+
+
 
 def back_to_clues(event):
     subprocess.Popen(["python","Level 1/clues.py"])

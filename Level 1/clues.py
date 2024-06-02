@@ -48,7 +48,7 @@ canvas.tag_bind(hint_button2,"<Button-1>",open_hints_window)
 
 #question 3
 def open_hints_window(event):
-    subprocess.Popen(['python','Level 1/answer3.py'])
+    subprocess.Popen(['python','Level 1/gethits.py'])
     root.destroy()
    
 hint_button_image3 = Image.open("Image/button_is-the-daughter-a-murderer (4).png")
