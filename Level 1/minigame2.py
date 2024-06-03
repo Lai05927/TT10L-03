@@ -29,15 +29,29 @@ button=canvas.create_image(450,400, image=button_image)
 canvas.tag_bind(button,"<Button-1>", show_message)
 
 
-#option 3
+
+#potion 75
 def show_message(event):
     messagebox.showinfo("answer","ANSWER WRONG")
+
+button_image2=ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (5).png"))
+button=canvas.create_image(670,400, image=button_image2)
+canvas.tag_bind(button,"<Button-1>", show_message)
+
+
+#option 35
+def show_message(event):
+    messagebox.showinfo("answer","ANSWER CORRECT")
 
 button_image3=ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (4).png"))
 button=canvas.create_image(890,400, image=button_image3)
 canvas.tag_bind(button,"<Button-1>", show_message)
 
-# option9
+
+
+
+
+# option 2
 def show_message(event):
     messagebox.showinfo("answer","ANSWER CORRECT")
 
@@ -45,6 +59,8 @@ def navigate_to_answer_window3():
     subprocess.Popen(["python", "Level 1/answer3.py"])
 
     root.destroy() 
+
+
 
 def show_message(event, is_correct):
     if is_correct:
@@ -57,9 +73,7 @@ canvas.tag_bind(button, "<Button-1>", lambda event: show_message(event, True))
 
 
 
-button_image2=ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (5).png"))
-button=canvas.create_image(670,400, image=button_image2)
-canvas.tag_bind(button,"<Button-1>", show_message)
+
 
 
 

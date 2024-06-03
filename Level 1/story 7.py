@@ -104,18 +104,7 @@ root.bind("<Return>", skip_animation)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+#button
 
 def home(event):
     subprocess.Popen(["python","Index.py"])
@@ -127,20 +116,33 @@ home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, an
 canvas.tag_bind(home_button, "<Button-1>",home)
 
 
-#button
 
-
-def open_clues_window(event):
-    subprocess.Popen(["python","Level 1/clues.py"])
+def question_btn(event):
+    subprocess.Popen(['python','Level 1/clues.py'])
     root.destroy()
+   
+question_button_image1 = Image.open("Level 1/Level 1 image/button_question (1).png")
+question_photo1 = ImageTk.PhotoImage(question_button_image1)
+question_button1 = canvas.create_image(1100,555,image=question_photo1)
+canvas.tag_bind(question_button1,"<Button-1>",question_btn)
 
-Question_btn = tk.Button(root, text="Question", font=('bold', 24))
-Question_btn.place(x=1100, y=500)
-Question_btn.bind("<Button-1>", open_clues_window)
 
-Answer_btn=tk.Button(root,text="Answer\n Question",font=('bold',24))
-Answer_btn.place(x=1100,y=580)
-main_Frame=tk.Frame(root)
+
+
+
+def answer_question(event):
+    subprocess.Popen(['python','Level 1/question.py'])
+    root.destroy()
+   
+answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-question.png")
+answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
+answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
+canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
+root.mainloop()
+
+
+
+
 
 
 
