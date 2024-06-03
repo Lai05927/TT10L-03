@@ -38,7 +38,7 @@ opening_lines = [
 
 opening_count = 0
 opening_text = ""
-opening_label = canvas.create_text(screen_width/2, screen_height/2, text=opening_text, font=("Comic Sans MS", 20), fill="white", width=screen_width-100)
+opening_label = canvas.create_text(screen_width/2, screen_height/2, text=opening_text, font=("Comic Sans MS", 30), fill="white", width=screen_width-100)
 
 
 # Text to speech engine
@@ -65,7 +65,7 @@ def animate_text():
         if len(opening_text) < len(line):
             opening_text += line[len(opening_text)]
             canvas.itemconfig(opening_label, text=opening_text)
-            root.after(100, animate_text)  # Adjust the speed of typing here
+            root.after(50, animate_text)  # Adjust the speed of typing here
         else:
             t = threading.Thread(target=speak_text, args=(line,))
             t.start()
@@ -77,10 +77,6 @@ def animate_text():
 
 
 
-
-
-
-
 def start_animation():
     animate_text()
 # Call start_animation() after main window is displayed
@@ -89,6 +85,22 @@ root.after(110, start_animation)
 
 
 
+def skip_animation(event):
+    global opening_count, opening_text
+    opening_count = len(opening_lines)
+    opening_text = opening_lines[-1]
+    canvas.itemconfig(opening_label, text=opening_text)
+    # Speak the entire text
+    speak_text(opening_text)
+    # Stop the ongoing animation thread if any
+    if threading.active_count() > 1:
+        for thread in threading.enumerate():
+            if thread.name == "MainThread":
+                continue
+            thread.join()
+
+# Bind the Enter key event to the skip_animation function
+root.bind("<Return>", skip_animation)
 
 
 
@@ -129,4 +141,9 @@ Question_btn.bind("<Button-1>", open_clues_window)
 Answer_btn=tk.Button(root,text="Answer\n Question",font=('bold',24))
 Answer_btn.place(x=1100,y=580)
 main_Frame=tk.Frame(root)
+
+
+
+
+
 root.mainloop()
