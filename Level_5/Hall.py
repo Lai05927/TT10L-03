@@ -254,50 +254,50 @@ def create_back_button(canvas, x, y):
 
 def on_option_click(option):
     global selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary, return_button
-    if option in ["Relation with Baldric", "Where were you when the incident happened?", "Kiara"]:
-        if option == "Relation with Baldric":
+    if option in ["Relation Emberly with Baldric", "Where were you when the incident happened?", "Kiara"]:
+        if option == "Relation Emberly with Baldric":
             new_text = "I am Reynold"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Emberly, Reynold's sister."
         elif option == "Kiara":
             new_text = "I am Kiara, Emberly's friend"
-    elif option in ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation with Baldric":
+    elif option in ["Relation Chandra with Baldric", "Where were you when the incident happened?", "Charlie"]:
+        if option == "Relation Chandra with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
         elif option == "Charlie":
             new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation with Baldric":
+    elif option in ["Relation Heidi with Baldric", "Where were you when the incident happened?", "Charlie"]:
+        if option == "Relation Heidi with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
         elif option == "Charlie":
             new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation with Baldric":
+    elif option in ["Relation Reynold with Baldric", "Where were you when the incident happened?", "Charlie"]:
+        if option == "Relation Reynold with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
         elif option == "Charlie":
             new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation with Baldric":
+    elif option in ["Relation Kiara with Baldric", "Where were you when the incident happened?", "Charlie"]:
+        if option == "Relation Kiara with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
         elif option == "Charlie":
             new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation with Baldric":
+    elif option in ["Relation Jane with Baldric", "Where were you when the incident happened?", "Charlie"]:
+        if option == "Relation Jane with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
         elif option == "Charlie":
             new_text = "I am Charlie, Where were you when the incident happened?'s friend"
     else:
-        if option == "Relation with Baldric":
+        if option == "Relation Mary with Baldric":
             new_text = "I am Relation with Baldric"
         elif option == "Where were you when the incident happened?":
             new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
@@ -370,13 +370,13 @@ def on_back_click():
         canvas.itemconfig(button, state='hidden')
 
 create_script_box(canvas, character_name_emberly, initial_text_emberly, 100, screen_height/4*3, screen_width-200, screen_height/4-50)
-selection_buttons_emberly = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Kiara"], 850, 300)
-selection_buttons_chandra = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"], 850, 300)
-selection_buttons_heidi = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_reynold = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_kiara = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_jane = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_mary = create_text_selection_buttons(canvas, ["Relation with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_emberly = create_text_selection_buttons(canvas, ["Relation Emberly with Baldric", "Where were you when the incident happened?", "Kiara"], 850, 300)
+selection_buttons_chandra = create_text_selection_buttons(canvas, ["Relation Chandra with Baldric", "Where were you when the incident happened?", "Charlie"], 850, 300)
+selection_buttons_heidi = create_text_selection_buttons(canvas, ["Relation Heidi with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_reynold = create_text_selection_buttons(canvas, ["Relation Reynold with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_kiara = create_text_selection_buttons(canvas, ["Relation Kiara with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_jane = create_text_selection_buttons(canvas, ["Relation Jane with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_mary = create_text_selection_buttons(canvas, ["Relation Mary with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
 
 return_button = create_return_button(canvas,  850, 300)
 canvas.itemconfig(return_button, state='hidden')
