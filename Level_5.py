@@ -49,6 +49,20 @@ hall_button_image = ImageTk.PhotoImage(hall_glow_image)
 hall_button = canvas.create_image(655/1280*screen_width, 217/720*screen_height, image=hall_button_image)
 canvas.tag_bind(hall_button, "<Button-1>", open_hall_window)
 
+def on_hover(event):
+    canvas.itemconfig(hall_white_text, state='normal')
+
+def on_leave(event):
+    canvas.itemconfig(hall_white_text, state='hidden')
+
+hall_white_button_image = ImageTk.PhotoImage((Image.open("Level_5/Image/White Button.png")).resize((50,50)))
+hall_white_button = canvas.create_image(705/1280*screen_width, 167/720*screen_height, image=hall_white_button_image)
+canvas.tag_bind(hall_button, "<Button-1>", open_hall_window)
+hall_white_text = canvas.create_text(705/1280*screen_width, 167/720*screen_height, text="Hall", fill="black", state='hidden', font=("Helvetica", 16))
+canvas.tag_bind(hall_white_button, '<Enter>', on_hover)
+canvas.tag_bind(hall_white_button, '<Leave>', on_leave)
+canvas.tag_bind(hall_white_button, '<Button-1>', open_hall_window)
+
 def open_room_window(event):
     subprocess.Popen(["python", "Level_5/Room.py"])
     root.destroy()
@@ -58,6 +72,20 @@ room_glow_image = create_glow_effect(room_image)
 room_button_image = ImageTk.PhotoImage(room_glow_image)
 room_button = canvas.create_image(211/1280*screen_width, 367/720*screen_height, image=room_button_image)
 canvas.tag_bind(room_button, "<Button-1>", open_room_window)
+
+def on_hover(event):
+    canvas.itemconfig(room_white_text, state='normal')
+
+def on_leave(event):
+    canvas.itemconfig(room_white_text, state='hidden')
+
+room_white_button_image = ImageTk.PhotoImage((Image.open("Level_5/Image/White Button.png")).resize((50,50)))
+room_white_button = canvas.create_image(261/1280*screen_width, 317/720*screen_height, image=room_white_button_image)
+canvas.tag_bind(room_button, "<Button-1>", open_room_window)
+room_white_text = canvas.create_text(261/1280*screen_width, 317/720*screen_height, text="Room", fill="black", state='hidden', font=("Helvetica", 16))
+canvas.tag_bind(room_white_button, '<Enter>', on_hover)
+canvas.tag_bind(room_white_button, '<Leave>', on_leave)
+canvas.tag_bind(room_white_button, '<Button-1>', open_room_window)
 
 def open_note_window(event):
     subprocess.Popen(["python", "Level_5/Note.py"])
