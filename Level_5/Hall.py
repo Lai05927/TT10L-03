@@ -70,25 +70,25 @@ def wrap_text(text, line_length):
     lines.append(line.strip())
     return "\n".join(lines)
 
-initial_text_emberly = "I am Emberly"
+initial_text_emberly = "I'm Emberly, the second daughter among three siblings, and I'm Baldric's sister."
 character_name_emberly = "Emberly Jellison"
 
-initial_text_chandra = "I am Chandra"
+initial_text_chandra = "I'm Chandra, Reynold's wife."
 character_name_chandra = "Chandra Jellison"
 
-initial_text_heidi = "I am Heidi"
+initial_text_heidi = "I am Heidi, Baldric's wife."
 character_name_heidi = "Heidi Jellison"
 
-initial_text_reynold = "I am Reynold"
+initial_text_reynold = "I am Reynold, the youngest among three siblings, and I'm Baldric's brother."
 character_name_reynold = "Reynold Jellison"
 
-initial_text_kiara = "I am Kiara"
+initial_text_kiara = "I am Kiara, Baldric's concubine."
 character_name_kiara = "Kiara Jellison"
 
-initial_text_jane = "I am Jane"
+initial_text_jane = "I am Jane, a servant in the family."
 character_name_jane = "Jane"
 
-initial_text_mary = "I am Mary"
+initial_text_mary = "I am Mary, a servant in the family."
 character_name_mary = "Mary"
 
 def Emberly():
@@ -107,7 +107,7 @@ def Emberly():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_emberly, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_emberly, 100))
 
 def Chandra():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -125,7 +125,7 @@ def Chandra():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_chandra, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_chandra, 100))
 
 def Heidi():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -143,7 +143,7 @@ def Heidi():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_heidi, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_heidi, 100))
 
 def Reynold():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -161,7 +161,7 @@ def Reynold():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_reynold, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_reynold, 100))
 
 def Kiara():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -179,7 +179,7 @@ def Kiara():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_kiara, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_kiara, 100))
 
 def Jane():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -197,7 +197,7 @@ def Jane():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_jane, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_jane, 100))
 
 def Mary():
     global script_box, character_name_box, text_widget, character_name_text, selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary,back_button
@@ -215,7 +215,7 @@ def Mary():
     canvas.itemconfig(back_button, state='normal')
     canvas.itemconfig(return_button, state='hidden')
 
-    canvas.itemconfig(text_widget, text=wrap_text(initial_text_mary, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(initial_text_mary, 100))
 
 command=[Emberly, Chandra, Heidi, Reynold, Kiara, Jane, Mary]
 
@@ -254,57 +254,57 @@ def create_back_button(canvas, x, y):
 
 def on_option_click(option):
     global selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary, return_button
-    if option in ["Relation Emberly with Baldric", "Where were you when the incident happened?", "Kiara"]:
-        if option == "Relation Emberly with Baldric":
-            new_text = "I am Reynold"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Emberly, Reynold's sister."
-        elif option == "Kiara":
-            new_text = "I am Kiara, Emberly's friend"
-    elif option in ["Relation Chandra with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation Chandra with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation Heidi with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation Heidi with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation Reynold with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation Reynold with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation Kiara with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation Kiara with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
-    elif option in ["Relation Jane with Baldric", "Where were you when the incident happened?", "Charlie"]:
-        if option == "Relation Jane with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
+    if option in ["Family Business", "Encrypted email", "Emberly's call records"]:
+        if option == "Family Business":
+            new_text = "Emberly Jellison's notebook contained a detailed financial plan, which included important information about the company's internal business, indicating that she was secretly planning a huge investment recently, but the last page of the plan was deliberately torn off."
+        elif option == "Encrypted email":
+            new_text = "An encrypted email was found in Emberly's computer, which expressed her dissatisfaction with Baldric Jellison and her doubts about the family's current situation."
+        elif option == "Emberly's call records":
+            new_text = "Her phone call records were found, showing that she had recently frequently contacted an unknown number, but the content of the call had been deleted."
+    elif option in ["Dispute on that night", "Chandra's call records", "Suicide case many years ago"]:
+        if option == "Dispute on that night":
+            new_text = "At the dinner party that night, Chandra had a fierce quarrel with Baldric, and then Baldric said he was not feeling well and went back to his room to rest."
+        elif option == "Chandra's call records":
+            new_text = "Chandra's mobile phone call records showed that she had spoken to Heidi several times on the night of the incident. According to her, the content of the call involved Heidi's health and family affairs."
+        elif option == "Suicide case many years ago":
+            new_text = "After investigation, the police found that Chandra's sister Isadora committed suicide by jumping off a building many years ago, and she had a dispute with Baldric before her death."
+    elif option in ["Heidi's dispute", "Heidi's diary", "Medication"]:
+        if option == "Heidi's dispute":
+            new_text = "Heidi had a quarrel with Baldric the night before the crime."
+        elif option == "Heidi's diary":
+            new_text = "Her diary recorded her dissatisfaction with Baldric and her disappointment in marriage."
+        elif option == "Medication":
+            new_text = "Heidi suffers from depression and frequently takes antipsychotics."
+    elif option in ["Dissatisfaction", "Reynold's diary", "Alibi"]:
+        if option == "Dissatisfaction":
+            new_text = "Family members' confessions mentioned that Reynold often expressed dissatisfaction with Baldric, and even quarreled with him frequently."
+        elif option == "Reynold's diary":
+            new_text = "Reynold's diary recorded his love and praise for Chandra, but each page ended with a same word 'sadly'."
+        elif option == "Alibi":
+            new_text = "He and Chandra were about to go to bed at the time of the crime."
+    elif option in ["Dispute", "Private text messages", "Cell phone records"]:
+        if option == "Dispute":
+            new_text = "The night before the incident, Kiara did hear Heidi and Baldric arguing, and said that this was not the first time they had quarreled, and they quarreled almost every two or three days."
+        elif option == "Private text messages":
+            new_text = "A private text message record between her and Baldric was found, which showed her dissatisfaction with Baldric and her expectations for the future."
+        elif option == "Cell phone records":
+            new_text = "Kiara Jellison's cell phone records showed that she had frequent contact with a strange man recently, but the content was unknown."
+    elif option in ["Miss Chandra", "Master Baldric", "Empty medicine bottle"]:
+        if option == "Miss Chandra":
+            new_text = "Miss Chandra is a very gentle person. It is rare for her to quarrel with Master Baldric like yesterday. She is really standing up for Miss Heidi."
+        elif option == "Master Baldric":
+            new_text = "Master Baldric is a pervert. He often speaks and behaves inappropriately to girls, which makes people feel uncomfortable. He is not often at home and only comes back occasionally for family dinners."
+        elif option == "Empty medicine bottle":
+            new_text = "When throwing away the garbage, the garbage bag was not tied tightly and an empty medicine bottle fell out."
     else:
-        if option == "Relation Mary with Baldric":
-            new_text = "I am Relation with Baldric"
-        elif option == "Where were you when the incident happened?":
-            new_text = "I am Where were you when the incident happened?, Relation with Baldric's brother."
-        elif option == "Charlie":
-            new_text = "I am Charlie, Where were you when the incident happened?'s friend"
+        if option == "Witness":
+            new_text = "Miss Heidi was witnessed entering Master Baldric's room at noon on the day of the crime."
+        elif option == "Master Reynold and Miss Chandra":
+            new_text = "Miss Chandra is an orphan, and their marriage was not blessed by the Earl and Countess. Their relationship is very strange; you can always feel that they love each other, but there is always some kind of obstacle separating them."
+        elif option == "Mobile phone records":
+            new_text = "Mary's mobile phone records show that she has had frequent contact with a strange man recently, but the content is unknown."
     
-    canvas.itemconfig(text_widget, text=wrap_text(new_text, 50))
+    canvas.itemconfig(text_widget, text=wrap_text(new_text, 100))
     
     for button in selection_buttons_emberly + selection_buttons_chandra + selection_buttons_heidi + selection_buttons_reynold + selection_buttons_kiara + selection_buttons_jane + selection_buttons_mary:
         canvas.itemconfig(button, state='hidden')
@@ -317,19 +317,19 @@ def on_return_click():
     global selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary, return_button
     
     if canvas.itemcget(character_name_text, 'text') == character_name_emberly:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_emberly, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_emberly, 100))
     elif canvas.itemcget(character_name_text, 'text') == character_name_chandra:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_chandra, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_chandra, 100))
     elif canvas.itemcget(character_name_text, 'text') == character_name_heidi:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_heidi, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_heidi, 100))
     elif canvas.itemcget(character_name_text, 'text') == character_name_reynold:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_reynold, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_reynold, 100))
     elif canvas.itemcget(character_name_text, 'text') == character_name_kiara:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_kiara, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_kiara, 100))
     elif canvas.itemcget(character_name_text, 'text') == character_name_jane:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_jane, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_jane, 100))
     else:
-        canvas.itemconfig(text_widget, text=wrap_text(initial_text_mary, 50))
+        canvas.itemconfig(text_widget, text=wrap_text(initial_text_mary, 100))
     
     canvas.itemconfig(return_button, state='hidden')
 
@@ -370,13 +370,13 @@ def on_back_click():
         canvas.itemconfig(button, state='hidden')
 
 create_script_box(canvas, character_name_emberly, initial_text_emberly, 100, screen_height/4*3, screen_width-200, screen_height/4-50)
-selection_buttons_emberly = create_text_selection_buttons(canvas, ["Relation Emberly with Baldric", "Where were you when the incident happened?", "Kiara"], 850, 300)
-selection_buttons_chandra = create_text_selection_buttons(canvas, ["Relation Chandra with Baldric", "Where were you when the incident happened?", "Charlie"], 850, 300)
-selection_buttons_heidi = create_text_selection_buttons(canvas, ["Relation Heidi with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_reynold = create_text_selection_buttons(canvas, ["Relation Reynold with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_kiara = create_text_selection_buttons(canvas, ["Relation Kiara with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_jane = create_text_selection_buttons(canvas, ["Relation Jane with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
-selection_buttons_mary = create_text_selection_buttons(canvas, ["Relation Mary with Baldric", "Where were you when the incident happened?", "Charlie"],  850, 300)
+selection_buttons_emberly = create_text_selection_buttons(canvas, ["Family Business", "Encrypted email", "Emberly's call records"], 850, 300)
+selection_buttons_chandra = create_text_selection_buttons(canvas, ["Dispute on that night","Chandra's call records","Suicide case many years ago"], 850, 300)
+selection_buttons_heidi = create_text_selection_buttons(canvas, ["Heidi's dispute", "Heidi's diary", "Medication"],  850, 300)
+selection_buttons_reynold = create_text_selection_buttons(canvas, ["Dissatisfaction", "Reynold's diary", "Alibi"],  850, 300)
+selection_buttons_kiara = create_text_selection_buttons(canvas, ["Dispute", "Private text messages", "Cell phone records"],  850, 300)
+selection_buttons_jane = create_text_selection_buttons(canvas, ["Miss Chandra", "Master Baldric", "Empty medicine bottle"],  850, 300)
+selection_buttons_mary = create_text_selection_buttons(canvas, ["Witness", "Master Reynold and Miss Chandra", "Mobile phone records"],  850, 300)
 
 return_button = create_return_button(canvas,  850, 300)
 canvas.itemconfig(return_button, state='hidden')
