@@ -2,6 +2,8 @@ from PIL import Image, ImageTk, ImageFilter, ImageEnhance, ImageOps
 import tkinter as tk
 import tkinter.messagebox as messagebox
 import subprocess
+import pygame
+from tkinter import ttk
 root = tk.Tk()
 root.title("Level 1")
 screen_width = root.winfo_screenwidth()
@@ -95,5 +97,27 @@ note_image = (Image.open("Level_5/Image/Note.png").resize((255,170)))
 note_button_image = ImageTk.PhotoImage(note_image)
 note_button = canvas.create_image(1160/1280*screen_width, 590/720*screen_height, image=note_button_image)
 canvas.tag_bind(note_button, "<Button-1>", open_note_window)
+
+def toggle_mute(event):
+    global muted
+    muted = not muted
+    if muted:
+        canvas.itemconfig(mute_button, image=mute_icon)
+        pygame.mixer.music.set_volume(0)
+    else:
+        canvas.itemconfig(mute_button, image=unmute_icon)
+        pygame.mixer.music.set_volume(1)
+
+pygame.mixer.init()
+pygame.mixer.music.load("Level_5/Image/mp3 4.mp3")
+
+mute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Muted.jpg")).resize((50, 50)))
+unmute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Unmute.png")).resize((50, 50)))
+
+muted = False
+mute_button = canvas.create_image(1230, 30, image=unmute_icon)
+canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
+
+pygame.mixer.music.play(-1)
 
 root.mainloop()

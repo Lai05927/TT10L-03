@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import random
+import pygame
+from tkinter import ttk
 
 # Initialize game variables
 min_value = 1
@@ -50,6 +52,27 @@ canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
 canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_photo)
 
+def toggle_mute(event):
+    global muted
+    muted = not muted
+    if muted:
+        canvas.itemconfig(mute_button, image=mute_icon)
+        pygame.mixer.music.set_volume(0)
+    else:
+        canvas.itemconfig(mute_button, image=unmute_icon)
+        pygame.mixer.music.set_volume(1)
+
+pygame.mixer.init()
+pygame.mixer.music.load("Level_5/Image/mp3 6.mp3")
+
+mute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Muted.jpg")).resize((50, 50)))
+unmute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Unmute.png")).resize((50, 50)))
+
+muted = False
+mute_button = canvas.create_image(1230, 30, image=unmute_icon)
+canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
+
+pygame.mixer.music.play(-1)
 # Create UI elements on the canvas
 label = tk.Label(root, text=f"Guess a number between {min_value} and {max_value}:", font=("Arial", 14))
 entry = tk.Entry(root, font=("Arial", 14))
