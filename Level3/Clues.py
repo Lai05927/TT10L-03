@@ -1,10 +1,16 @@
+import json
+import os
+import sys
 from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
 
+
+
 Clues = tk.Tk()
 Clues.title('Clues')
+
 screen_height = Clues.winfo_screenheight()
 screen_width = Clues.winfo_screenwidth()
 Clues.geometry(f"{screen_width}x{screen_height}")
@@ -84,20 +90,24 @@ def create_buttons():
         canvas.delete(button)
     buttons.clear()
     button_images.clear()
+
     for i, button_info in enumerate(button_data):
         image_path = button_info["image_path"]
         text = button_info["text"]
         image = Image.open(image_path)
         bttn_image = ImageTk.PhotoImage(image)
         button_images.append(bttn_image)
+
         button_x = initial_x + i * horizontal_spacing
         button_y = initial_y
+        
         button_photo = canvas.create_image(button_x, button_y, image=bttn_image)
         buttons.append(button_photo)
         canvas.tag_bind(button_photo, "<Button-1>", lambda event, text=text: on_button_click(event, text))
 
 # Create initial buttons
 create_buttons()
+
 
 def home(event):
     subprocess.Popen(["python", "Index.py"])
