@@ -38,7 +38,7 @@ def start_level_2():
     main.destroy()
 
 def start_level_3():
-    subprocess.Popen(["python","Level_3.py"])
+    subprocess.Popen(["python","Level3/Level_3.py"])
     main.destroy()
 
 def start_level_4():
