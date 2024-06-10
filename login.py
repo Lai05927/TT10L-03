@@ -76,31 +76,32 @@ def signup():
         show_frame(login_frame)
 
 # Login frame widgets
-tk.Label(login_frame, text="Login", font=("Arial", 24)).pack(pady=10)
-tk.Label(login_frame, text="Username").pack(pady=5)
+tk.Label(login_frame, text="Login", font=("Arial", 26)).pack(padx=40,pady=20)
+tk.Label(login_frame, text="Username",font=("Arial",10)).pack(padx=40,pady=5)
 username_entry = tk.Entry(login_frame)
-username_entry.pack(pady=5)
-tk.Label(login_frame, text="Password").pack(pady=5)
+username_entry.pack(padx=40,pady=5)
+tk.Label(login_frame, text="Password",font=("Arial",10)).pack(padx=40,pady=5)
 password_entry = tk.Entry(login_frame, show="*")
-password_entry.pack(pady=5)
-tk.Button(login_frame, text="Login", command=login).pack(pady=10)
-tk.Button(login_frame, text="Sign Up", command=lambda: show_frame(signup_frame)).pack(pady=10)
+password_entry.pack(padx=40,pady=5)
+tk.Button(login_frame, text="Login", command=login).pack(padx=40,pady=10)
+tk.Button(login_frame, text="Sign Up", command=lambda: show_frame(signup_frame)).pack(padx=40,pady=10)
 
 # Signup frame widgets
-tk.Label(signup_frame, text="Sign Up", font=("Arial", 24)).pack(pady=10)
-tk.Label(signup_frame, text="Username").pack(pady=5)
+tk.Label(signup_frame, text="Sign Up", font=("Arial", 26)).pack(padx=40,pady=20)
+tk.Label(signup_frame, text="Username",font=("Arial",10)).pack(padx=40,pady=5)
 new_username_entry = tk.Entry(signup_frame)
-new_username_entry.pack(pady=5)
-tk.Label(signup_frame, text="Password").pack(pady=5)
+new_username_entry.pack(padx=40,pady=5)
+tk.Label(signup_frame, text="Password",font=("Arial",10)).pack(padx=40,pady=5)
 new_password_entry = tk.Entry(signup_frame, show="*")
-new_password_entry.pack(pady=5)
-tk.Button(signup_frame, text="Sign Up", command=signup).pack(pady=10)
-tk.Button(signup_frame, text="Back to Login", command=lambda: show_frame(login_frame)).pack(pady=10)
+new_password_entry.pack(padx=40,pady=5)
+tk.Button(signup_frame, text="Sign Up", command=signup).pack(padx=40,pady=10)
+tk.Button(signup_frame, text="Back to Login", command=lambda: show_frame(login_frame)).pack(padx=40,pady=10)
 
 # Start with login frame
 show_frame(login_frame)
 
 root.mainloop()
+
 
 
 
