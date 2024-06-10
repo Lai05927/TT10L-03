@@ -130,4 +130,26 @@ answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-
 answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
 answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
 canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
+
+
+
+
+
+lock_image1 = (Image.open("Level 1/Level 1 image/Lock_icon.png")).resize((45,45))
+lock_image_tk1 = ImageTk.PhotoImage(lock_image1)
+lock_button1 = canvas.create_image(screen_width/56, screen_height/3, anchor="nw", image=lock_image_tk1)
+
+
+
+lock_image = (Image.open("Level 1/Level 1 image/Lock_icon - Copy.png")).resize((45,45))
+lock_image_tk = ImageTk.PhotoImage(lock_image)
+lock_button = canvas.create_image(screen_width/1.08, screen_height/3.01, anchor="nw", image=lock_image_tk)
+
+
+
+
+
+
+
+
 root.mainloop()
