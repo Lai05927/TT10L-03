@@ -20,9 +20,9 @@ shadow=canvas.create_image(screen_width/2, screen_height/3, anchor="center", ima
 title_image=ImageTk.PhotoImage(Image.open("Image/Title.png"))
 title=canvas.create_image(screen_width/2, screen_height/3, anchor="center", image=title_image)
 
-level_image_file=["Image/Level_1.png","Image/Level_2.png","Image/Level_3.png",
-                  "Image/Level_4.png","Image/Level_5.png","Image/Level_6.png",
-                  "Image/Level_7.png"]
+level_image_file=["Image/Level_1.png","Image/Level_2(grey).png","Image/Level_3.png",
+                  "Image/Level_4(grey).png","Image/Level_5.png","Image/Level_6(grey).png",
+                  "Image/Level_7(grey).png"]
 level_images = [ImageTk.PhotoImage(Image.open(img)) for img in level_image_file]
 positions=  [(screen_width/4, screen_height/3), (screen_width/2, screen_height/3),
              (screen_width/4*3, screen_height/3), (screen_width/5, screen_height/3*2),
