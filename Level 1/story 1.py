@@ -71,7 +71,6 @@ def animate_text():
             root.after(50, animate_text)  # Adjust the speed of typing here
         else:
             
-           
             opening_count += 1
             root.after(1000, animate_text)  # Adjust the pause between lines here
     else:
@@ -82,10 +81,9 @@ def animate_text():
 
 def start_animation():
     animate_text()
+
 # Call start_animation() after main window is displayed
 root.after(100, start_animation)
-
-
 
 
 
@@ -116,8 +114,6 @@ canvas.tag_bind(question_button1,"<Button-1>",question_btn)
 
 
 
-
-
 def answer_question(event):
     play_sound(button_click_sound)  
     subprocess.Popen(['python','Level 1/question.py'])
@@ -127,8 +123,14 @@ answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-
 answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
 answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
 canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
-root.mainloop()
 
+
+
+#bind return key
+def show_text(event):
+    start_animation()
+
+root.bind("<Return>", show_text)  
 
 
 
