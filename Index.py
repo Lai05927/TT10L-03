@@ -30,7 +30,7 @@ positions=  [(screen_width/4, screen_height/3), (screen_width/2, screen_height/3
              (screen_width/5*4, screen_height/3*2)]
 
 def start_level_1():
-    subprocess.Popen(["python","Level 1/story 7.py"])
+    subprocess.Popen(["python","Level 1/story 1.py"])
     main.destroy()
 
 def start_level_2():
