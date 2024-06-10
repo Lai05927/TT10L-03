@@ -2,8 +2,37 @@ from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import json
+import os 
+import sys
+import pygame
+
+pygame.mixer.init()
+
+#Function to play sound
+def play_button_click_sound():
+    sound_file = "Level3\Image\Yesterday Lucy and her co 3.wav"
+    try:
+        sound = pygame.mixer.Sound(sound_file)
+        sound.play()
+    except pygame.error as e:
+        messagebox.showerror("Error", f"Cannot play sound: {e}")
+
+
+def bird_sound():
+    sound_file = r"Level3\Image\the-voices-of-birds-in-the-forest-7715.mp3"
+    try:
+        pygame.mixer.music.load(sound_file)
+        pygame.mixer.music.play(-1)#play continuously 
+    except pygame.error as e:
+        messagebox.showerror("Error", f"Cannot play sound: {e}")
+
+# Ensure the script gets a username argument
+username = sys.argv[1] if len(sys.argv) > 1 else "default_user"
+
 Level_3 = tk.Tk()
 Level_3.title('Level 3')
+
 screen_width = Level_3.winfo_screenwidth()
 screen_height = Level_3.winfo_screenheight()
 Level_3.geometry(f"{screen_width}x{screen_height}")
@@ -15,7 +44,7 @@ canvas.pack(fill='both',expand=True)
 canvas.create_image(screen_width/2, screen_height/2, anchor='center', image=bg_image)
 
 txt = '\n\n\n\n\nYesterday Lucy and her colleagues Peter,Jart and Ava went camping\ntogether. That night, everyone got drunk...'
-text_item = canvas.create_text(screen_width/2,50/864*screen_height, anchor='center', text=txt, fill='white', font=('Arial', 24, 'bold'))
+text_item = canvas.create_text(screen_width/2,60/864*screen_height, anchor='center', text=txt, fill='white', font=('Arial', 24, 'bold'))
 
 index = 0
 
@@ -81,5 +110,24 @@ home_image = (Image.open("Level3\Image\Home.png")).resize((45,45))
 home_image_tk = ImageTk.PhotoImage(home_image)
 home_button = canvas.create_image(140/1536*screen_width, 80/864*screen_height, image=home_image_tk)
 canvas.tag_bind(home_button, "<Button-1>", home)
+
+def logout(event):
+    subprocess.Popen(["python","login.py"])
+    Level_3.destroy()
+
+logout_image = (Image.open("Level3\Image\Logout.png")).resize((45,45))
+logout_image_tk = ImageTk.PhotoImage(logout_image)
+logout_button = canvas.create_image(210/1536*screen_width, 80/864*screen_height, image=logout_image_tk)
+canvas.tag_bind(logout_button, "<Button-1>", logout)
+
+def play_sound_button(event):
+    play_button_click_sound()
+
+sound_image = (Image.open("Level3\Image\sound-button_275.png")).resize((45,45))
+sound_button_image = ImageTk.PhotoImage(sound_image)
+sound_button = canvas.create_image(270 / 1536 * screen_width, 80 / 864 * screen_height, image=sound_button_image)
+canvas.tag_bind(sound_button, "<Button-1>", play_sound_button)
+
+bird_sound()
 
 Level_3.mainloop()
