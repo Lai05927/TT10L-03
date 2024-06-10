@@ -1,10 +1,15 @@
+import json
+import os
+import sys
 from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
 
+score=0
+
 Answer = tk.Tk()
-Answer.title('Clues')
+Answer.title('Solve the puzzle')
 screen_height = Answer.winfo_screenheight()
 screen_width = Answer.winfo_screenwidth()
 Answer.geometry(f"{screen_width}x{screen_height}")
@@ -38,35 +43,41 @@ def slider():
 
 slider()
 
-def show_message(event):
-    messagebox.showinfo("Correct!!!","You are right!!Congrat!!")
+# Function to update score label
+def update_score_label():
+    global score, score_label
+    score_label.config(text="Score: " + str(score))
+
+# Functions to handle correct and wrong answers
+def show_message_correct(event):
+    global score
+    score += 10  # Add points for a correct answer
+    update_score_label()
+    messagebox.showinfo("Congratulations!!", "You are right!!\nLet me tell you the truth!!\nYour score: " + str(score))
+    truth(event)  # Automatically proceed to the truth
+
+def show_message_wrong(event):
+    global score
+    score -= 5  # Deduct points for a wrong answer
+    update_score_label()
+    messagebox.showinfo("Wrong..", "You are wrong.Let me tell you the truth!!\nYour score: " + str(score))
+    truth(event)  # Automatically proceed to the truth
 
 button_image_i= ImageTk.PhotoImage(Image.open(r"Level3\Image\button_i.png"))
 button_i=canvas.create_image(500,500, image=button_image_i)
-canvas.tag_bind(button_i,"<Button-1>", show_message)
-
-def show_message(event):
-    messagebox.showinfo("Wrong..","You are wrong.Try again!!")
+canvas.tag_bind(button_i,"<Button-1>", show_message_correct)
 
 button_image_ii= ImageTk.PhotoImage(Image.open(r"Level3/Image/button_ii.png"))
 button_ii=canvas.create_image(750,500, image=button_image_ii)
-canvas.tag_bind(button_ii,"<Button-1>", show_message)
-
-def show_message(event):
-    messagebox.showinfo("Wrong..","You are wrong.Try again!!")
+canvas.tag_bind(button_ii,"<Button-1>", show_message_wrong)
 
 button_image_iii= ImageTk.PhotoImage(Image.open(r"Level3/Image/button_iii.png"))
 button_iii=canvas.create_image(1000,500, image=button_image_ii)
-canvas.tag_bind(button_iii,"<Button-1>", show_message)
+canvas.tag_bind(button_iii,"<Button-1>", show_message_wrong)
 
-def next_level(event):
-    subprocess.Popen(["python","Level4/story5.py"])
+def truth(event):
+    subprocess.Popen(["python","Level3/truth.py"])
     Answer.destroy()
-
-next_image = (Image.open(r"Level3\Image\button_next-level.png"))
-next_image_tk = ImageTk.PhotoImage(next_image)
-next_button = canvas.create_image(1300/1536*screen_width, 720/864*screen_height, image=next_image_tk)
-canvas.tag_bind(next_button, "<Button-1>", next_level)
 
 def home(event):
     subprocess.Popen(["python", "Index.py"])
@@ -85,5 +96,8 @@ back_image = (Image.open("Level3\Image\Back.png")).resize((45, 45))
 back_image_tk = ImageTk.PhotoImage(back_image)
 back_button = canvas.create_image(230 / 1536 * screen_width, 110 / 864 * screen_height, image=back_image_tk)
 canvas.tag_bind(back_button, "<Button-1>", back)
+
+score_label=tk.Label(Answer,text="Score: 0",font=('Arial', 24, 'bold'), bg='black', fg='white')
+score_label.place(x=690, y=700)
 
 Answer.mainloop()
