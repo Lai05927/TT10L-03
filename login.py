@@ -32,7 +32,7 @@ screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
 root.state('zoomed')
 
-bg_image = Image.open("Image/login.png")
+bg_image = Image.open("Image\login.png")
 bg_photo = ImageTk.PhotoImage(bg_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack(fill="both", expand=True)
@@ -76,31 +76,28 @@ def signup():
         show_frame(login_frame)
 
 # Login frame widgets
-tk.Label(login_frame, text="Login", font=("Arial", 24)).place(x=350, y=50)
-tk.Label(login_frame, text="Username").place(x=350, y=150)
+tk.Label(login_frame, text="Login", font=("Arial", 24)).pack()
+tk.Label(login_frame, text="Username").pack()
 username_entry = tk.Entry(login_frame)
-username_entry.place(x=350, y=180)
-tk.Label(login_frame, text="Password").place(x=350, y=210)
+username_entry.pack()
+tk.Label(login_frame, text="Password").pack()
 password_entry = tk.Entry(login_frame, show="*")
-password_entry.place(x=350, y=240)
-tk.Button(login_frame, text="Login", command=login).place(x=350, y=280)
-tk.Button(login_frame, text="Sign Up", command=lambda: show_frame(signup_frame)).place(x=350, y=320)
+password_entry.pack()
+tk.Button(login_frame, text="Login", command=login).pack()
+tk.Button(login_frame, text="Sign Up", command=lambda: show_frame(signup_frame)).pack()
 
 # Signup frame widgets
-tk.Label(signup_frame, text="Sign Up", font=("Arial", 24)).place(x=350, y=50)
-tk.Label(signup_frame, text="Username").place(x=350, y=150)
+tk.Label(signup_frame, text="Sign Up", font=("Arial", 24)).pack()
+tk.Label(signup_frame, text="Username").pack()
 new_username_entry = tk.Entry(signup_frame)
-new_username_entry.place(x=350, y=180)
-tk.Label(signup_frame, text="Password").place(x=350, y=210)
+new_username_entry.pack()
+tk.Label(signup_frame, text="Password").pack()
 new_password_entry = tk.Entry(signup_frame, show="*")
-new_password_entry.place(x=350, y=240)
-tk.Button(signup_frame, text="Sign Up", command=signup).place(x=350, y=280)
-tk.Button(signup_frame, text="Back to Login", command=lambda: show_frame(login_frame)).place(x=350, y=320)
+new_password_entry.pack()
+tk.Button(signup_frame, text="Sign Up", command=signup).pack()
+tk.Button(signup_frame, text="Back to Login", command=lambda: show_frame(login_frame)).pack()
 
 # Start with login frame
 show_frame(login_frame)
 
 root.mainloop()
-
-
-
