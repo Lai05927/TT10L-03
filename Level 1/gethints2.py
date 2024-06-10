@@ -6,6 +6,27 @@ root.title("")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
+import pygame
+
+
+#background music
+import background_music
+background_music.play_music("Level 1/Level 1 image/mixkit-small-win-2020.wav")
+
+
+#sound effect
+pygame.mixer.init()
+
+# Load sound effects
+button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")
+
+
+# Function to play sound effects
+def play_sound(sound):
+    pygame.mixer.Sound.play(sound)
+
+
+
 
 
 #answer background
@@ -31,7 +52,7 @@ def animate_text():
         question_text += question_txt[question_count]
         canvas.itemconfig(question_label, text=question_text)
         question_count += 1
-        root.after(50, animate_text)  
+        root.after(40, animate_text)  
     else:
         # Animation finished
         pass
@@ -40,7 +61,8 @@ animate_text()
 
 #hints button
 def get_hints(event):
-    subprocess.Popen(['python','Level 1/minigame.py'])
+    play_sound(button_click_sound)  
+    subprocess.Popen(['python','Level 1/minigame2.py'])
     root.destroy()
    
 get_hints_image1= Image.open("Level 1/Level 1 image/button_hint.png")
@@ -52,6 +74,7 @@ canvas.tag_bind(get_hints_button1,"<Button-1>",get_hints)
 #back button
 
 def back(event):
+    play_sound(button_click_sound)  
     subprocess.Popen(['python','Level 1/clues.py'])
     root.destroy()
    

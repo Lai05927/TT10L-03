@@ -6,6 +6,23 @@ root.title("")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
+import pygame
+
+
+#background music
+
+import background_music
+
+background_music.play_music("Level 1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
+
+
+
+#sound effect
+pygame.mixer.init()
+button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+
+def play_sound(sound):
+    pygame.mixer.Sound.play(sound) # Function to play sound effects
 
 
 #answer background
@@ -29,7 +46,7 @@ def animate_text():
         answer1_text += answer1_txt[answer1_count]
         canvas.itemconfig(answer1_label, text=answer1_text)
         answer1_count += 1
-        root.after(100, animate_text)  
+        root.after(50, animate_text)  
     else:
         # Animation finished
         pass
@@ -37,6 +54,7 @@ def animate_text():
 animate_text()
 
 def home(event):
+    play_sound(button_click_sound) 
     subprocess.Popen(["python","Index.py"])
     root.destroy()
 
@@ -47,6 +65,7 @@ canvas.tag_bind(home_button, "<Button-1>",home)
 
 
 def back(event):
+    play_sound(button_click_sound) 
     subprocess.Popen(['python','Level 1/story 7.py'])
     root.destroy()
 
@@ -56,24 +75,12 @@ back_btn = canvas.create_image(120,52,image=back_photo)
 canvas.tag_bind(back_btn,"<Button-1>",back)
 
 
-def hints(event):
-    subprocess.Popen(["python", "Level 1/hints.py"])
-    root.destroy()
-
-hints_image = Image.open("Image/hints btn.png").resize((70, 70))
-hints_image_tk = ImageTk.PhotoImage(hints_image)
-
-x = screen_width - 30 - hints_image_tk.width()  
-y = 30  
-
-hints_button = canvas.create_image(x, y, anchor="nw", image=hints_image_tk)
-
-canvas.tag_bind(hints_button, "<Button-1>", hints)
 
 
 
 
 def back_to_clues(event):
+    play_sound(button_click_sound) 
     subprocess.Popen(["python","Level 1/clues.py"])
     root.destroy()
 

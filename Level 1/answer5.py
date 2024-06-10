@@ -6,6 +6,22 @@ root.title("")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
+import pygame
+
+#background music
+
+import background_music
+
+background_music.play_music("Level 1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
+
+
+
+#sound effect
+pygame.mixer.init()
+button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+
+def play_sound(sound):
+    pygame.mixer.Sound.play(sound) # Function to play sound effects
 
 
 
@@ -31,7 +47,7 @@ def animate_text():
         answer5_text += answer5_txt[answer5_count]
         canvas.itemconfig(answer5_label, text=answer5_text)
         answer5_count += 1
-        root.after(100, animate_text)  
+        root.after(50, animate_text)  
     else:
         # Animation finished
         pass
@@ -39,6 +55,7 @@ def animate_text():
 animate_text()
 
 def home(event):
+    play_sound(button_click_sound)
     subprocess.Popen(["python","Index.py"])
     root.destroy()
 
@@ -49,6 +66,7 @@ canvas.tag_bind(home_button, "<Button-1>",home)
 
 
 def back(event):
+    play_sound(button_click_sound)
     subprocess.Popen(['python','Level 1/story 7.py'])
     root.destroy()
 
@@ -59,6 +77,7 @@ canvas.tag_bind(back_btn,"<Button-1>",back)
 
 
 def back_to_clues(event):
+    play_sound(button_click_sound)
     subprocess.Popen(["python","Level 1/clues.py"])
     root.destroy()
 
@@ -71,8 +90,6 @@ canvas.tag_bind(back_to_clues_btn,"<Button-1>",back_to_clues)
 
 
 
-
-root.mainloop()
 
 
 
