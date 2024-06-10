@@ -5,8 +5,14 @@ from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import pygame
 
+pygame.mixer.init()
 
+def bg_sound():
+    sound_file = r"Level3\Image\let-the-mystery-unfold-122118.mp3"
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play(-1)#play continuously 
 
 Clues = tk.Tk()
 Clues.title('Clues')
@@ -126,5 +132,7 @@ back_image = (Image.open("Level3\Image\Back.png")).resize((45, 45))
 back_image_tk = ImageTk.PhotoImage(back_image)
 back_button = canvas.create_image(230 / 1536 * screen_width, 110 / 864 * screen_height, image=back_image_tk)
 canvas.tag_bind(back_button, "<Button-1>", back)
+
+bg_sound()
 
 Clues.mainloop()
