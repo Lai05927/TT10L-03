@@ -41,6 +41,7 @@ question_label = canvas.create_text(650, 240, text=question_txt, font=("Comic Sa
 
 def handle_button_click(is_correct):
     if is_correct:
+        messagebox.showinfo("Answer", "Answer Correct")
         navigate_to_answer_window3()
     else:
         messagebox.showinfo("Answer", "Wrong Answer,Can't get the hint")
