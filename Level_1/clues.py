@@ -13,19 +13,19 @@ import pygame
 #background music
 import background_music
 
-background_music.play_music("Level 1/Level 1 image/dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
+background_music.play_music("Level_1\Level 1 image\dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
 
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound) # Function to play sound effects
 
 
-clues_image = Image.open("Level 1\Level 1 image\clues_image.png")
+clues_image = Image.open("Level_1/Level 1 image\clues_image.png")
 clues_photo = ImageTk.PhotoImage(clues_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -34,7 +34,7 @@ canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=clue
 
 def back(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/story 7.py'])
+    subprocess.Popen(['python','Level_1/story 7.py'])
     root.destroy()
 
 back_image = Image.open("Image/Back.png").resize((45,45))
@@ -44,7 +44,7 @@ canvas.tag_bind(back_btn,"<Button-1>",back)
     
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/answer.py'])
+    subprocess.Popen(['python','Level_1/answer.py'])
     root.destroy()
    
 #Question1    
@@ -57,7 +57,7 @@ canvas.tag_bind(hint_button1,"<Button-1>",open_hints_window)
 #question 2
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/answer2.py'])
+    subprocess.Popen(['python','Level_1/answer2.py'])
     root.destroy()
    
 hint_button_image2 = Image.open("Image/button_did-mom-go-out-at-night (3).png")
@@ -69,7 +69,7 @@ canvas.tag_bind(hint_button2,"<Button-1>",open_hints_window)
 #question 3
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/gethits.py'])
+    subprocess.Popen(['python','Level_1/gethits.py'])
     root.destroy()
    
 hint_button_image3 = Image.open("Image/button_is-the-daughter-a-murderer (4).png")
@@ -86,7 +86,7 @@ canvas.tag_bind(hint_button3,"<Button-1>",open_hints_window)
 #Question 4
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/answer4.py'])
+    subprocess.Popen(['python','Level_1/answer4.py'])
     root.destroy()
    
 hint_button_image4 = Image.open("Image/button_daughter-really-push-it-to-her-mother (2).png")
@@ -98,7 +98,7 @@ canvas.tag_bind(hint_button4,"<Button-1>",open_hints_window)
 #Question 5
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/gethints2.py'])
+    subprocess.Popen(['python','Level_1/gethints2.py'])
     root.destroy()
    
 hint_button_image5 = Image.open("Image/button_daughter-have-mentally-problem (2).png")
@@ -110,7 +110,7 @@ canvas.tag_bind(hint_button5,"<Button-1>",open_hints_window)
 #Question 6
 def open_hints_window(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/answer6.py'])
+    subprocess.Popen(['python','Level_1/answer6.py'])
     root.destroy()
    
 hint_button_image6 = Image.open("Image/button_did-mother-wear-her-daughters-dress-and-use-her-perfume (1).png")
@@ -123,10 +123,10 @@ canvas.tag_bind(hint_button6,"<Button-1>",open_hints_window)
 
 def answer_question(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level 1/question.py'])
+    subprocess.Popen(['python','Level_1/question.py'])
     root.destroy()
    
-answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-question.png")
+answer_question_button_image1 = Image.open("Level_1/Level 1 image/button_answer-question.png")
 answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
 answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
 canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
@@ -135,13 +135,13 @@ canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
 
 
 
-lock_image1 = (Image.open("Level 1/Level 1 image/Lock_icon.png")).resize((45,45))
+lock_image1 = (Image.open("Level_1/Level 1 image/Lock_icon.png")).resize((45,45))
 lock_image_tk1 = ImageTk.PhotoImage(lock_image1)
 lock_button1 = canvas.create_image(screen_width/56, screen_height/3, anchor="nw", image=lock_image_tk1)
 
 
 
-lock_image = (Image.open("Level 1/Level 1 image/Lock_icon - Copy.png")).resize((45,45))
+lock_image = (Image.open("Level_1/Level 1 image/Lock_icon - Copy.png")).resize((45,45))
 lock_image_tk = ImageTk.PhotoImage(lock_image)
 lock_button = canvas.create_image(screen_width/1.08, screen_height/3.01, anchor="nw", image=lock_image_tk)
 
