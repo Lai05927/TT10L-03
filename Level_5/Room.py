@@ -171,44 +171,23 @@ def Baldric(event):
 
     canvas.itemconfig(text_widget, text=wrap_text(initial_text_baldric, 100))
 
-def on_hover_medicine(event):
-    canvas.itemconfig(medicine_white_text, state='normal')
-
-def on_leave_medicine(event):
-    canvas.itemconfig(medicine_white_text, state='hidden')
-
 medicine_image = ImageTk.PhotoImage(Image.open("Level_5/Image/Medicine_bottle.png").resize((70, 70)))
 medicine_button = canvas.create_image(770/1280*screen_width, 465/720*screen_height, anchor="center", image=medicine_image)
 canvas.tag_bind(medicine_button, "<Button-1>", Medicine)
-medicine_white_text = canvas.create_text(770/1280*screen_width, 465/720*screen_height, text="Medicine", fill="black", state='hidden', font=("Helvetica", 16))
-canvas.tag_bind(medicine_button, '<Enter>', on_hover_medicine)
-canvas.tag_bind(medicine_button, '<Leave>', on_leave_medicine)
-
-def on_hover_cctv(event):
-    canvas.itemconfig(cctv_white_text, state='normal')
-
-def on_leave_cctv(event):
-    canvas.itemconfig(cctv_white_text, state='hidden')
+medicine_white_text = canvas.create_text(770/1280*screen_width, 435/720*screen_height, text="Medicine", fill="black", state='normal', font=("Helvetica", 16))
+canvas.tag_bind(medicine_white_text, "<Button-1>", Medicine)
 
 cctv_image = ImageTk.PhotoImage((Image.open("Level_5/Image/White Button.png")).resize((50,50)))
 cctv_button = canvas.create_image(1100/1280*screen_width, 100/720*screen_height, anchor="center", image=cctv_image)
 canvas.tag_bind(cctv_button, "<Button-1>", CCTV)
-cctv_white_text = canvas.create_text(1100/1280*screen_width, 100/720*screen_height, text="CCTV", fill="black", state='hidden', font=("Helvetica", 16))
-canvas.tag_bind(cctv_button, '<Enter>', on_hover_cctv)
-canvas.tag_bind(cctv_button, '<Leave>', on_leave_cctv)
-
-def on_hover_scene(event):
-    canvas.itemconfig(scene_white_text, state='normal')
-
-def on_leave_scene(event):
-    canvas.itemconfig(scene_white_text, state='hidden')
+cctv_white_text = canvas.create_text(1100/1280*screen_width, 100/720*screen_height, text="CCTV", fill="black", state='normal', font=("Helvetica", 16))
+canvas.tag_bind(cctv_white_text, "<Button-1>", CCTV)
 
 scene_image = ImageTk.PhotoImage((Image.open("Level_5/Image/White Button.png")).resize((50,50)))
 scene_button = canvas.create_image(300/1280*screen_width, 350/720*screen_height, anchor="center", image=scene_image)
 canvas.tag_bind(scene_button, "<Button-1>", Scene)
-scene_white_text = canvas.create_text(300/1280*screen_width, 350/720*screen_height, text="Scene", fill="black", state='hidden', font=("Helvetica", 16))
-canvas.tag_bind(scene_button, '<Enter>', on_hover_scene)
-canvas.tag_bind(scene_button, '<Leave>', on_leave_scene)
+scene_white_text = canvas.create_text(300/1280*screen_width, 350/720*screen_height, text="Scene", fill="black", state='normal', font=("Helvetica", 16))
+canvas.tag_bind(scene_white_text, "<Button-1>", Scene)
 
 smith_image = ImageTk.PhotoImage((Image.open("Level_5/Image/Smith.png")).resize((250, 444)))
 smith_button = canvas.create_image(150/1280*screen_width,460/720*screen_height, anchor="center", image=smith_image)
@@ -217,6 +196,8 @@ canvas.tag_bind(smith_button, "<Button-1>", Smith)
 baldric_image = ImageTk.PhotoImage((Image.open("Level_5/Image/Baldric.png")).resize((250, 170)))
 baldric_button = canvas.create_image(1030/1280*screen_width,610/720*screen_height, anchor="center", image=baldric_image)
 canvas.tag_bind(baldric_button, "<Button-1>", Baldric)
+baldric_white_text = canvas.create_text(1080/1280*screen_width,610/720*screen_height, text="Baldric", fill="black", state='normal', font=("Helvetica", 16))
+canvas.tag_bind(baldric_white_text, "<Button-1>", Baldric)
 
 def on_option_click(option):
     global selection_buttons_smith, selection_buttons_baldric, return_button
