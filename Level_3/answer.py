@@ -5,6 +5,14 @@ from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import pygame
+
+pygame.mixer.init()
+
+def bg_sound():
+    sound_file = r"Level_3\Image\let-the-mystery-unfold-122118.mp3"
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play(-1)#play continuously
 
 score=0
 
@@ -99,5 +107,7 @@ canvas.tag_bind(back_button, "<Button-1>", back)
 
 score_label=tk.Label(Answer,text="Score: 0",font=('Arial', 24, 'bold'), bg='black', fg='white')
 score_label.place(x=690, y=700)
+
+bg_sound()
 
 Answer.mainloop()
