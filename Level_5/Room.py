@@ -50,7 +50,7 @@ home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, im
 canvas.tag_bind(home_button, "<Button-1>", home)
 
 def back(event):
-    subprocess.Popen(["python","Level_5.py"])
+    subprocess.Popen(["python","Level_5/Level_5.py"])
     room_window.destroy()
 
 back_image = (Image.open("Image/Back.png")).resize((45,45))
