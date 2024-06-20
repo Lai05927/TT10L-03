@@ -12,13 +12,13 @@ root.state('zoomed')
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
+background_music.play_music("Level_1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
 
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound)
@@ -30,7 +30,7 @@ def play_sound(sound):
 
 #Main window background
 
-bg_image = Image.open("Level 1/Level 1 image/story 1 background.png")
+bg_image = Image.open("Level_1/Level 1 image/story 1 background.png")
 bg_photo = ImageTk.PhotoImage(bg_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -104,10 +104,10 @@ canvas.tag_bind(home_button, "<Button-1>",home)
 
 def question_btn(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/clues.py'])
+    subprocess.Popen(['python','Level_1/clues.py'])
     root.destroy()
    
-question_button_image1 = Image.open("Level 1/Level 1 image/button_question (1).png")
+question_button_image1 = Image.open("Level_1/Level 1 image/button_question (1).png")
 question_photo1 = ImageTk.PhotoImage(question_button_image1)
 question_button1 = canvas.create_image(1100,555,image=question_photo1)
 canvas.tag_bind(question_button1,"<Button-1>",question_btn)
@@ -116,10 +116,10 @@ canvas.tag_bind(question_button1,"<Button-1>",question_btn)
 
 def answer_question(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/question.py'])
+    subprocess.Popen(['python','Level_1/question.py'])
     root.destroy()
    
-answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-question.png")
+answer_question_button_image1 = Image.open("Level_1/Level 1 image/button_answer-question.png")
 answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
 answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
 canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
