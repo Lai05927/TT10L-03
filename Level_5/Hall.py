@@ -278,13 +278,13 @@ def create_back_button(canvas, x, y):
 
 def on_option_click(option):
     global selection_buttons_emberly, selection_buttons_chandra, selection_buttons_heidi, selection_buttons_reynold, selection_buttons_kiara, selection_buttons_jane, selection_buttons_mary, return_button
-    if option in ["Family Business", "Encrypted email", "Emberly's call records"]:
+    if option in ["Family Business", "Encrypted email", "Emberly's husband"]:
         if option == "Family Business":
             new_text = "Emberly Jellison's notebook contained a detailed financial plan, which included important information about the company's internal business, indicating that she was secretly planning a huge investment recently, but the last page of the plan was deliberately torn off."
         elif option == "Encrypted email":
             new_text = "An encrypted email was found in Emberly's computer, which expressed her dissatisfaction with Baldric Jellison and her doubts about the family's current situation."
-        elif option == "Emberly's call records":
-            new_text = "Her phone call records were found, showing that she had recently frequently contacted an unknown number, but the content of the call had been deleted."
+        elif option == "Emberly's husband":
+            new_text = "After investigation, the police found that Emberly's husband was once stolen his identity by Baldric"
     elif option in ["Dispute on that night", "Chandra's call records", "Suicide case many years ago"]:
         if option == "Dispute on that night":
             new_text = "At the dinner party that night, Chandra had a fierce quarrel with Baldric, and then Baldric said he was not feeling well and went back to his room to rest."
@@ -394,7 +394,7 @@ def on_back_click():
         canvas.itemconfig(button, state='hidden')
 
 create_script_box(canvas, character_name_emberly, initial_text_emberly, 100, screen_height/4*3, screen_width-200, screen_height/4-50)
-selection_buttons_emberly = create_text_selection_buttons(canvas, ["Family Business", "Encrypted email", "Emberly's call records"], 850, 300)
+selection_buttons_emberly = create_text_selection_buttons(canvas, ["Family Business", "Encrypted email", "Emberly's husband"], 850, 300)
 selection_buttons_chandra = create_text_selection_buttons(canvas, ["Dispute on that night","Chandra's call records","Suicide case many years ago"], 850, 300)
 selection_buttons_heidi = create_text_selection_buttons(canvas, ["Heidi's dispute", "Heidi's diary", "Medication"],  850, 300)
 selection_buttons_reynold = create_text_selection_buttons(canvas, ["Dissatisfaction", "Reynold's diary", "Alibi"],  850, 300)
