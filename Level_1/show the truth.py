@@ -12,12 +12,16 @@ import pygame
 
 
 
+#background music
+import background_music
+background_music.play_music("Level_1/Level 1 image/dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
 
 
 
 
 
-board_image = Image.open("Level 1/Level 1 image/give me a blank blac.jpg")
+
+board_image = Image.open("Level_1/Level 1 image/give me a blank blac.jpg")
 board_photo = ImageTk.PhotoImage(board_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -40,10 +44,47 @@ def animate_text():
 
 animate_text()
 
+def show_full_text(event):
+    global display_txt, current_text_index
+    display_txt = story_txt
+    current_text_index = len(story_txt)
+    canvas.itemconfig(text_item, text=display_txt)
+
+# Bind the Enter key to show the full text
+root.bind('<Return>', show_full_text)
+
+def home(event):
+    
+    subprocess.Popen(["python","Index.py"])
+    root.destroy()
+
+home_image = (Image.open("Image/Home.png")).resize((45,45))
+home_image_tk = ImageTk.PhotoImage(home_image)
+home_button = canvas.create_image(screen_width/30, screen_height/40, anchor="nw", image=home_image_tk)
+canvas.tag_bind(home_button, "<Button-1>",home)
+
+
+def back(event):
+
+    subprocess.Popen(['python','Level_1/Level_1.py'])
+    root.destroy()
+
+back_image = Image.open("Image/Back.png").resize((45,45))
+back_photo = ImageTk.PhotoImage(back_image)
+back_btn = canvas.create_image(124,43,image=back_photo)
+canvas.tag_bind(back_btn,"<Button-1>",back)
 
 
 
-
+def next_story(event):
+    
+    subprocess.Popen(['python','Level_3.py'])
+    root.destroy()
+   
+next_story_button_image1 = Image.open("Level_1/Level 1 image/button_next-story (1).png")
+next_story_photo1 = ImageTk.PhotoImage(next_story_button_image1)
+next_story_button1 = canvas.create_image(1120,640,image=next_story_photo1)
+canvas.tag_bind(next_story_button1,"<Button-1>",next_story)
 
 
 

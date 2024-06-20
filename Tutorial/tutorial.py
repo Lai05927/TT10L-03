@@ -8,7 +8,7 @@ import pygame
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/walk-alone-dark-cinematic-music-horror-music-153445.mp3")
+background_music.play_music("Level_1/Level 1 image/walk-alone-dark-cinematic-music-horror-music-153445.mp3")
 
 
 
@@ -36,7 +36,7 @@ def show_next_text(event):
 
 
 def show_choose_story_button():
-    choose_story_image = Image.open("Level 1/Level 1 image/button_choose-story.png")
+    choose_story_image = Image.open("Level_1/Level 1 image/button_choose-story.png")
     choose_story_image_tk = ImageTk.PhotoImage(choose_story_image)
     choose_story_button = canvas.create_image(screen_width / 3, screen_height / 1.2, anchor="nw", image=choose_story_image_tk)
     canvas.tag_bind(choose_story_button, "<Button-1>", choose_story)
@@ -76,7 +76,7 @@ shadow = canvas.create_image(screen_width / 30, screen_height / 2.5, anchor="nw"
 
 
 # Character
-character_image = Image.open("Level 1/Level 1 image/file (3).png").resize((500, 500))
+character_image = Image.open("Level_1/Level 1 image/file (3).png").resize((500, 500))
 character_image_tk = ImageTk.PhotoImage(character_image)
 character_button = canvas.create_image(screen_width / 1.6, screen_height / 3.7, anchor="nw", image=character_image_tk)
 

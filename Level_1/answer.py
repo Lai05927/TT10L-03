@@ -13,20 +13,20 @@ import pygame
 
 import background_music
 
-background_music.play_music("Level 1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
+background_music.play_music("Level_1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
 
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound) # Function to play sound effects
 
 
 #answer background
-board_image = Image.open("Level 1/Level 1 image/blackboard.jpeg")
+board_image = Image.open("Level_1/Level 1 image/blackboard.jpeg")
 board_photo = ImageTk.PhotoImage(board_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -66,7 +66,7 @@ canvas.tag_bind(home_button, "<Button-1>",home)
 
 def back(event):
     play_sound(button_click_sound) 
-    subprocess.Popen(['python','Level 1/story 7.py'])
+    subprocess.Popen(['python','Level_1/Level_1.py'])
     root.destroy()
 
 back_image = Image.open("Image/Back.png").resize((45,45))
@@ -81,7 +81,7 @@ canvas.tag_bind(back_btn,"<Button-1>",back)
 
 def back_to_clues(event):
     play_sound(button_click_sound) 
-    subprocess.Popen(["python","Level 1/clues.py"])
+    subprocess.Popen(["python","Level_1/clues.py"])
     root.destroy()
 
 back_to_clues_image=Image.open("Image/button_back-to-clues (4).png")
