@@ -59,7 +59,7 @@ def login():
     if username in user_data and user_data[username]['password'] == password:
         messagebox.showinfo("Login Successful", f"Welcome back {username}! You were on level {user_data[username]['level']}.")
         root.destroy()
-        subprocess.Popen(["python", "Index.py"])
+        subprocess.Popen(["python", "Level_3/level_3.py"])
     else:
         messagebox.showerror("Error", "User doesn't exist or wrong password")
 
@@ -70,7 +70,7 @@ def signup():
     if username in user_data:
         messagebox.showerror("Error", "User already exists")
     else:
-        user_data[username] = {'password': password, 'level': 1}
+        user_data[username] = {'password': password, 'level': 3}
         save_user_data(user_data)
         messagebox.showinfo("Signup Successful", "User created successfully! You can now login.")
         show_frame(login_frame)
