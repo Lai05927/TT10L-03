@@ -43,7 +43,7 @@ canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
 pygame.mixer.music.play(-1)
 
 def back(event):
-    subprocess.Popen(["python","Level_5.py"])
+    subprocess.Popen(["python","Level_5/Note.py"])
     root.destroy()
 
 back_image = Image.open("Image/Back.png").resize((45,45))
