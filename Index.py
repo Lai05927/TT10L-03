@@ -46,7 +46,7 @@ def start_level_4():
     main.destroy()
 
 def start_level_5():
-    subprocess.Popen(["python","Level_5.py"])
+    subprocess.Popen(["python","Level_5/Level_5.py"])
     main.destroy()
 
 def start_level_6():
