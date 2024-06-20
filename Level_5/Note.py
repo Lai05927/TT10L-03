@@ -34,7 +34,7 @@ mute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Muted.jpg")).resize((5
 unmute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Unmute.png")).resize((50, 50)))
 
 muted = False
-mute_button = canvas.create_image(1230, 30, image=unmute_icon)
+mute_button = canvas.create_image(screen_width-50, 30, image=unmute_icon)
 canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
 
 pygame.mixer.music.play(-1)
