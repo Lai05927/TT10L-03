@@ -26,7 +26,7 @@ user_data = load_user_data()
 
 # Initialize main window for login/signup
 root = tk.Tk()
-root.title("Game Login System")
+root.title("Login System")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
@@ -52,14 +52,29 @@ signup_window = canvas.create_window(screen_width / 2, screen_height / 2, window
 # Update canvas to ensure frames are resized and displayed correctly
 canvas.update_idletasks()
 
+
+def update_current_user(username):
+    user_data = load_user_data()
+    user_data["current_user"] = username
+    save_user_data(user_data)
+
 def login():
     username = username_entry.get().strip()
     password = password_entry.get().strip()
 
     if username in user_data and user_data[username]['password'] == password:
-        messagebox.showinfo("Login Successful", f"Welcome back {username}! You were on level {user_data[username]['level']}.")
-        root.destroy()
-        subprocess.Popen(["python", "Index.py"])
+        level_num = user_data[username]['level']
+        update_current_user(username)
+        if level_num == 0:
+            messagebox.showinfo("Login Successful", f"Welcome {username}! Before we start, let me briefly introduce our game.")
+            root.destroy()
+            subprocess.Popen(["python", "Index.py"])
+        else:
+            messagebox.showinfo("Login Successful", f"Welcome back {username}! You were on level {user_data[username]['level']}.")
+            root.destroy()
+            file_to_open = f"Level_{level_num}/Level_{level_num}.py"
+            subprocess.Popen(["python", file_to_open, username])
+
     else:
         messagebox.showerror("Error", "User doesn't exist or wrong password")
 
@@ -70,7 +85,7 @@ def signup():
     if username in user_data:
         messagebox.showerror("Error", "User already exists")
     else:
-        user_data[username] = {'password': password, 'level': 1}
+        user_data[username] = {'password': password, 'level': 0}
         save_user_data(user_data)
         messagebox.showinfo("Signup Successful", "User created successfully! You can now login.")
         show_frame(login_frame)

@@ -37,13 +37,13 @@ mute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Muted.jpg")).resize((5
 unmute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Unmute.png")).resize((50, 50)))
 
 muted = False
-mute_button = canvas.create_image(1230, 30, image=unmute_icon)
+mute_button = canvas.create_image(screen_width-50, 30, image=unmute_icon)
 canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
 
 pygame.mixer.music.play(-1)
 
 def back(event):
-    subprocess.Popen(["python","Level_5.py"])
+    subprocess.Popen(["python","Level_5/Note.py"])
     root.destroy()
 
 back_image = Image.open("Image/Back.png").resize((45,45))
@@ -63,14 +63,14 @@ canvas.tag_bind(home_button, "<Button-1>", home)
 
 # Questions and answers
 questions = [
-    ("Murder method and plan?", "Manipulating medication", ["Accidental death", "Poison", "Hired killers"]),
-    ("Is this a personal crime or a organized gang crime?", "Gang crime, one mastermind, one accomplice and one cover-up", ["Gang crime, one mastermind and one accomplice", "Gang crime, one mastermind and one cover-up", "Individual crime, only one mastermind"]),
+    ("Murder method and plan?", "Manipulating medication", ["Accidental death", "Poison", "Hired killers", "Suffocation"]),
+    ("Is this a personal crime or a organized gang crime?", "Gang crime, one mastermind, one accomplice and one cover-up", ["Gang crime, one mastermind and one accomplice", "Gang crime, one mastermind and one cover-up", "Individual crime, only one mastermind", "Gang crime, one mastermind and two accomplices"]),
     ("Who is the mastermind?", "Chandra", ["Emberly", "Heidi", "Kiara", "Reynold"]),
-    ("What is the motion of Chandra", "Hatred towards Baldric", ["Revenge for past grievances", "Family pressure or influence", "Financial gain"]),
+    ("What is the motion of Chandra", "Hatred towards Baldric", ["Revenge for past grievances", "Family pressure or influence", "Financial gain", "Jealousy"]),
     ("Who is the accomplice?", "Heidi", ["Mary", "Emberly", "Kiara","Mr. Smith"]),
-    ("What is the motion of Heidi", "Resentment towards Baldric", ["Psychological instability", "Family pressure or influence", "Resolving internal family conflicts"]),
+    ("What is the motion of Heidi", "Resentment towards Baldric", ["Psychological instability", "Family pressure or influence", "Resolving internal family conflicts", "Financial gain"]),
     ("Who is the cover-up?", "Reynold", ["Mary", "Kiara", "Mr. Smith", "Jane"]),
-    ("What is the motion of Reynold", "Protecting family members", ["Jealousy or rivalry", "Inheritance disputes", "Revenge for past grievances"]),
+    ("What is the motion of Reynold", "Protecting family members", ["Jealousy or rivalry", "Inheritance disputes", "Revenge for past grievances", "Fear of exposure"]),
 ]
 
 question_index = 0
@@ -81,7 +81,7 @@ def display_question():
     global question_index, var
     if question_index < len(questions):
         q, a, options = questions[question_index]
-        options = [a] + options
+        options = options + [a]  # Ensure all options including the correct one are included
         random.shuffle(options)
         question_text.set(q)
         for i, btn in enumerate(option_buttons):
@@ -99,13 +99,17 @@ def check_answer():
         score += 1
         question_index += 1
         display_question()
-        messagebox.showinfo("Correct", "Well done! You are one step closer to solving the mystery.")
+        if score < len(questions):
+            messagebox.showinfo("Correct", "Well done! You are one step closer to solving the mystery.")
+        else:
+            pass
     else:
         messagebox.showwarning("Incorrect", "That's not the correct answer. Try again! Kindly return back to check the hints again.")
 
 # Function to end the quiz
 def end_quiz():
     messagebox.showinfo("Quiz Finished", f"Your score: {score}/{len(questions)}")
+    subprocess.Popen(["python","Index.py"])
     root.quit()
 
 # Create a Tkinter Label widget for the question
@@ -125,7 +129,7 @@ canvas.create_window(screen_width / 2, screen_height * 3 / 4, window=submit_butt
 
 # Create option buttons inside the options frame
 var = tk.StringVar()
-option_buttons = [tk.Radiobutton(options_frame, text="", font=("Arial", 14), variable=var, value="") for _ in range(4)]
+option_buttons = [tk.Radiobutton(options_frame, text="", font=("Arial", 14), variable=var, value="") for _ in range(5)]  # Ensure 5 options
 for btn in option_buttons:
     btn.pack(anchor="w")
 

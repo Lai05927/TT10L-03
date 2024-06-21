@@ -2,6 +2,14 @@ from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import pygame
+
+pygame.mixer.init()
+
+def bg_sound():
+    sound_file = r"Level_3\Image\let-the-mystery-unfold-122118.mp3"
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play(-1)#play continuously
 
 truth = tk.Tk()
 truth.title('Clues')
@@ -10,7 +18,7 @@ screen_height = truth.winfo_screenheight()
 screen_width = truth.winfo_screenwidth()
 truth.geometry(f"{screen_width}x{screen_height}")
 
-bg_image = ImageTk.PhotoImage(file=r"Level3\Image\book(1).png")
+bg_image = ImageTk.PhotoImage(file=r"Level_3\Image\book(1).png")
 canvas = tk.Canvas(truth, width=screen_width, height=screen_height)
 canvas.pack(fill='both', expand=True)
 canvas.create_image(screen_width / 2, screen_height / 2, anchor='center', image=bg_image)
@@ -42,9 +50,11 @@ def home(event):
     subprocess.Popen(["python","Index.py"])
     truth.destroy()
 
-home_image = (Image.open("Level3\Image\Home.png")).resize((45,45))
+home_image = (Image.open("Level_3\Image\Home.png")).resize((45,45))
 home_image_tk = ImageTk.PhotoImage(home_image)
 home_button = canvas.create_image(170/1536*screen_width, 110/864*screen_height, image=home_image_tk)
 canvas.tag_bind(home_button, "<Button-1>", home)
+
+bg_sound()
 
 truth.mainloop()

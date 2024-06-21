@@ -5,8 +5,14 @@ from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import pygame
 
+pygame.mixer.init()
 
+def bg_sound():
+    sound_file = r"Level_3\Image\let-the-mystery-unfold-122118.mp3"
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play(-1)#play continuously 
 
 Clues = tk.Tk()
 Clues.title('Clues')
@@ -15,7 +21,7 @@ screen_height = Clues.winfo_screenheight()
 screen_width = Clues.winfo_screenwidth()
 Clues.geometry(f"{screen_width}x{screen_height}")
 
-bg_image = ImageTk.PhotoImage(file=r"Level3\Image\book(1).png")
+bg_image = ImageTk.PhotoImage(file=r"Level_3\Image\book(1).png")
 canvas = tk.Canvas(Clues, width=screen_width, height=screen_height)
 canvas.pack(fill='both', expand=True)
 canvas.create_image(screen_width / 2, screen_height / 2, anchor='center', image=bg_image)
@@ -56,7 +62,7 @@ def display_text_animation(text):
 # Function to create "Back to Buttons" button
 def create_back_to_buttons_button():
     global back_button_id, back_button_image_tk
-    back_button_image = Image.open(r"Level3\Image\button_back.png")
+    back_button_image = Image.open(r"Level_3\Image\button_back.png")
     back_button_image_tk = ImageTk.PhotoImage(back_button_image)
     back_button_id = canvas.create_image(680, 640, image=back_button_image_tk, anchor='nw')
     canvas.tag_bind(back_button_id, "<Button-1>", back_to_buttons)
@@ -70,9 +76,9 @@ def back_to_buttons(event):
 
 # Data for buttons
 button_data = [
-    {"image_path": r"Level3\Image\button_ava.png", "text": "1.She likes Peter."},
-    {"image_path": r"Level3\Image\button_jart.png", "text": "1.He was the one who brought Lucy back to\nher tent after she got drunk."},
-    {"image_path": r"Level3\Image\button_peter.png", "text": "1.After he had drunk, he returned to his tent.\n2.He likes Lucy."}
+    {"image_path": r"Level_3\Image\button_ava.png", "text": "1.She likes Peter."},
+    {"image_path": r"Level_3\Image\button_jart.png", "text": "1.He was the one who brought Lucy back to\nher tent after she got drunk."},
+    {"image_path": r"Level_3\Image\button_peter.png", "text": "1.After he had drunk, he returned to his tent.\n2.He likes Lucy."}
 ]
 
 horizontal_spacing = 300
@@ -113,18 +119,20 @@ def home(event):
     subprocess.Popen(["python", "Index.py"])
     Clues.destroy()
 
-home_image = (Image.open("Level3\Image\Home.png")).resize((45, 45))
+home_image = (Image.open("Level_3\Image\Home.png")).resize((45, 45))
 home_image_tk = ImageTk.PhotoImage(home_image)
 home_button = canvas.create_image(170 / 1536 * screen_width, 110 / 864 * screen_height, image=home_image_tk)
 canvas.tag_bind(home_button, "<Button-1>", home)
 
 def back(event):
-    subprocess.Popen(["python", "Level3/Level_3.py"])
+    subprocess.Popen(["python", "Level_3/Level_3.py"])
     Clues.destroy()
 
-back_image = (Image.open("Level3\Image\Back.png")).resize((45, 45))
+back_image = (Image.open("Level_3\Image\Back.png")).resize((45, 45))
 back_image_tk = ImageTk.PhotoImage(back_image)
 back_button = canvas.create_image(230 / 1536 * screen_width, 110 / 864 * screen_height, image=back_image_tk)
 canvas.tag_bind(back_button, "<Button-1>", back)
+
+bg_sound()
 
 Clues.mainloop()
