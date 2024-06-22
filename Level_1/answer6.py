@@ -15,7 +15,7 @@ import pygame
 
 import background_music
 
-background_music.play_music("Level_1/Level 1 image/mixkit-game-experience-level-increased-2062.wav")
+background_music.play_music("Level_1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
 
 
 

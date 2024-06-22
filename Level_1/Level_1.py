@@ -14,7 +14,7 @@ root.state('zoomed')
 
 #background music
 import background_music
-background_music.play_music("Level_1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
+background_music.play_music("Level_1\Level 1 image\dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
 
 
 
