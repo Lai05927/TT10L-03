@@ -17,7 +17,7 @@ import pygame
 
 
 
-board_image = Image.open("Level 1/Level 1 image/give me a blank blac.jpg")
+board_image = Image.open("Level_1\Level 1 image\give me a blank blac.jpg")
 board_photo = ImageTk.PhotoImage(board_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
