@@ -12,12 +12,12 @@ import pygame
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
+background_music.play_music("Level_1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound) # Function to play sound effects
@@ -60,9 +60,9 @@ def question1():
     global text_item, option_button_photo1, option_button_photo2, option_button_photo3
     ques_text = 'Q1. Who dresses her clothes and uses her perfume?'
 
-    option_image1 = Image.open("Level 1/Level 1 image/button_herself (2).png")
-    option_image2 = Image.open("Level 1/Level 1 image/button_mother.png")
-    option_image3 = Image.open("Level 1/Level 1 image/button_nobody.png")
+    option_image1 = Image.open("Level_1/Level 1 image/button_herself (2).png")
+    option_image2 = Image.open("Level_1/Level 1 image/button_mother.png")
+    option_image3 = Image.open("Level_1/Level 1 image/button_nobody.png")
 
     option_button_photo1 = ImageTk.PhotoImage(option_image1)
     option_button_photo2 = ImageTk.PhotoImage(option_image2)
@@ -84,9 +84,9 @@ def question2():
     global text_item, option_button_photo4, option_button_photo5, option_button_photo6
 
     ques_text = 'Q2. Why did the daughter argue with her mother?'
-    option_image4 = Image.open("Level 1/Level 1 image/button_mother-has-a-mental-problem.png")
-    option_image5 = Image.open("Level 1/Level 1 image/button_cause-mother-use-her-perfume-and-clothes.png")
-    option_image6 = Image.open("Level 1/Level 1 image/button_daughter-has-a-mental-problem.png")
+    option_image4 = Image.open("Level_1/Level 1 image/button_mother-has-a-mental-problem.png")
+    option_image5 = Image.open("Level_1/Level 1 image/button_cause-mother-use-her-perfume-and-clothes.png")
+    option_image6 = Image.open("Level_1/Level 1 image/button_daughter-has-a-mental-problem.png")
 
     option_button_photo4 = ImageTk.PhotoImage(option_image4)
     option_button_photo5 = ImageTk.PhotoImage(option_image5)
@@ -110,9 +110,9 @@ def question3():
     global text_item, option_button_photo7, option_button_photo8, option_button_photo9
 
     ques_text = 'Q3. What did her daughter push?'
-    option_image7 = Image.open("Level 1/Level 1 image/button_mirror.png")
-    option_image8 = Image.open("Level 1/Level 1 image/button_her-mother.png")
-    option_image9 = Image.open("Level 1/Level 1 image/button_her-mother.png")
+    option_image7 = Image.open("Level_1/Level 1 image/button_mirror.png")
+    option_image8 = Image.open("Level_1/Level 1 image/button_her-mother.png")
+    option_image9 = Image.open("Level_1/Level 1 image/button_her-mother.png")
 
     option_button_photo7 = ImageTk.PhotoImage(option_image7)
     option_button_photo8 = ImageTk.PhotoImage(option_image8)
@@ -136,9 +136,9 @@ def question4():
     global text_item, option_button_photo10, option_button_photo11, option_button_photo12, show_the_truth_btn, show_the_truth_image, question_4_answered
     ques_text = 'Q4. Whose blood is that?'
 
-    option_image10 = Image.open("Level 1/Level 1 image/button_nobody.png")
-    option_image11 = Image.open("Level 1/Level 1 image/button_her-mother.png")
-    option_image12 = Image.open("Level 1/Level 1 image/button_herself (2).png")
+    option_image10 = Image.open("Level_1/Level 1 image/button_nobody.png")
+    option_image11 = Image.open("Level_1/Level 1 image/button_her-mother.png")
+    option_image12 = Image.open("Level_1/Level 1 image/button_herself (2).png")
 
     option_button_photo10 = ImageTk.PhotoImage(option_image10)
     option_button_photo11 = ImageTk.PhotoImage(option_image11)
@@ -155,7 +155,7 @@ def question4():
     option_button12 = canvas.create_image(950, 470, image=option_button_photo12, tags="option")
     canvas.tag_bind(option_button12, "<Button-1>", lambda event: handle_option(1, lambda: end_questions()))
 
-    show_the_truth_image = Image.open("Level 1/Level 1 image/button_show-the-truth.png")
+    show_the_truth_image = Image.open("Level_1/Level 1 image/button_show-the-truth.png")
     show_the_truth_btn = ImageTk.PhotoImage(show_the_truth_image)
     show_the_truth_btn1 = canvas.create_image(1100, 600, image=show_the_truth_btn)
     canvas.tag_bind(show_the_truth_btn1, "<Button-1>", check_question_4_answered)
@@ -167,7 +167,7 @@ def check_question_4_answered(event):
         messagebox.showwarning("Warning", "You must answer question 4 before viewing the truth.")
 
 def show_the_truth():
-    subprocess.Popen(["python", "Level 1/show the truth.py"])
+    subprocess.Popen(["python", "Level_1/show_the_truth.py"])
     root.destroy()
 
 def end_questions():
@@ -181,7 +181,7 @@ score_label = tk.Label(root, text=f"Score: {user_score}", font=('Comic Sans MS',
 score_label.pack()
 
 # Display question image and text
-ques_image = Image.open("Level 1/Level 1 image/clues_image.png")
+ques_image = Image.open("Level_1/Level 1 image/clues_image.png")
 ques_photo = ImageTk.PhotoImage(ques_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -195,6 +195,28 @@ shadow = canvas.create_image(screen_width / 10, screen_height / 4.5, anchor="nw"
 # Start with the first question
 question1()
 
+
+
+def home(event):
+    play_sound(button_click_sound)
+    subprocess.Popen(["python","Index.py"])
+    root.destroy()
+
+home_image = (Image.open("Image/Home.png")).resize((45,45))
+home_image_tk = ImageTk.PhotoImage(home_image)
+home_button = canvas.create_image(30/1280*screen_width, 30/720*screen_height, anchor="nw", image=home_image_tk)
+canvas.tag_bind(home_button, "<Button-1>",home)
+
+
+def back(event):
+    play_sound(button_click_sound)
+    subprocess.Popen(['python','Level_1/Level_1.py'])
+    root.destroy()
+
+back_image = Image.open("Image/Back.png").resize((45,45))
+back_photo = ImageTk.PhotoImage(back_image)
+back_btn = canvas.create_image(120,52,image=back_photo)
+canvas.tag_bind(back_btn,"<Button-1>",back)
 
 
 root.mainloop()
