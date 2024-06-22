@@ -167,7 +167,7 @@ def check_question_4_answered(event):
         messagebox.showwarning("Warning", "You must answer question 4 before viewing the truth.")
 
 def show_the_truth():
-    subprocess.Popen(["python", "Level_1/show the truth.py"])
+    subprocess.Popen(["python", "Level_1/show_the_truth.py"])
     root.destroy()
 
 def end_questions():
