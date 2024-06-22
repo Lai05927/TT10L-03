@@ -55,6 +55,15 @@ home_image_tk = ImageTk.PhotoImage(home_image)
 home_button = canvas.create_image(170/1536*screen_width, 110/864*screen_height, image=home_image_tk)
 canvas.tag_bind(home_button, "<Button-1>", home)
 
+def next(event):
+    subprocess.Popen(["python","Level_5/Level_5.py"])
+    truth.destroy()
+
+home_image = (Image.open(r"Level_3\Image\button_next-story.png"))
+home_image_tk = ImageTk.PhotoImage(home_image)
+home_button = canvas.create_image(770/1536*screen_width, 700/864*screen_height, image=home_image_tk)
+canvas.tag_bind(home_button, "<Button-1>", next)
+
 bg_sound()
 
 truth.mainloop()
