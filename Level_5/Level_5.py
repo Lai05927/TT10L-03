@@ -3,6 +3,8 @@ import tkinter as tk
 import tkinter.messagebox as messagebox
 import subprocess
 import pygame
+import json
+import os
 from tkinter import ttk
 root = tk.Tk()
 root.title("Level 1")
@@ -11,6 +13,45 @@ screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
 root.state('zoomed')
 
+
+# Ensure the script gets a username argument
+user_name = "yl"
+
+# Filename where to store user data
+USER_DATA_FILE = 'user_data.json'
+
+# Load user data from file
+def load_user_data():
+    if os.path.exists(USER_DATA_FILE):
+        with open(USER_DATA_FILE, 'r') as file:
+            return json.load(file)
+    else:
+        return {}
+
+# Save user data to file
+def save_user_data(data):
+    with open(USER_DATA_FILE, 'w') as file:
+        json.dump(data, file)
+
+# Update user level
+#def update_user_level(username, level):
+#    user_data = load_user_data()
+#    user_data[username]['level'] = level
+#    save_user_data(user_data)
+
+def update_user_level(username, level):
+    user_data = load_user_data()
+
+    # Check if username exists in user_data
+    if username in user_data:
+        user_data[username]['level'] = level
+    else:
+        # If username doesn't exist, create a new entry with default data
+        user_data[username] = {'password': '', 'level': level}  # Add default password if necessary
+
+    save_user_data(user_data)
+
+update_user_level(user_name, 5) 
 bg_image = Image.open("Level_5/Image/Background.png")
 bg_photo = ImageTk.PhotoImage(bg_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
