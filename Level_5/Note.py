@@ -34,7 +34,7 @@ mute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Muted.jpg")).resize((5
 unmute_icon = ImageTk.PhotoImage((Image.open("Level_5/Image/Unmute.png")).resize((50, 50)))
 
 muted = False
-mute_button = canvas.create_image(1230, 30, image=unmute_icon)
+mute_button = canvas.create_image(screen_width-50, 30, image=unmute_icon)
 canvas.tag_bind(mute_button, "<Button-1>", toggle_mute)
 
 pygame.mixer.music.play(-1)
@@ -80,7 +80,7 @@ for i, text in enumerate(texts):
     text_item = canvas.create_text(80, screen_height/5*3 + (i * 70) + 50, text=text, font=("Arial", 14), fill="black", state='hidden', width=screen_width/2-100, anchor='nw')
     text_items.append(text_item)
 
-minigame_button = tk.Button(bottom_left_frame, text="Proceed to Minigame", command=proceed_to_minigame, font=("Arial", 18))
+minigame_button = tk.Button(bottom_left_frame, text="Extra 3 hints", command=proceed_to_minigame, font=("Arial", 18))
 minigame_button.pack(side='bottom', pady=20)
 
 def proceed_to_mcq():
@@ -90,7 +90,7 @@ def proceed_to_mcq():
 bottom_right_frame = tk.Frame(canvas, width=screen_width/2, height=screen_height/2, bg='', highlightthickness=0)
 canvas.create_window(screen_width/2, screen_height/2, anchor='nw', window=bottom_right_frame)
 
-mcq_button = tk.Button(bottom_right_frame, text="Proceed to MCQ", command=proceed_to_mcq, font=("Arial", 18))
+mcq_button = tk.Button(bottom_right_frame, text="Solve the case", command=proceed_to_mcq, font=("Arial", 18))
 mcq_button.pack(side='bottom', pady=20)
 
 note_window.mainloop()

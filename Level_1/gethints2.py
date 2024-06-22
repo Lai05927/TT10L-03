@@ -11,14 +11,14 @@ import pygame
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/mixkit-small-win-2020.wav")
+background_music.play_music("Level_1/Level 1 image/mixkit-small-win-2020.wav")
 
 
 #sound effect
 pygame.mixer.init()
 
 # Load sound effects
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")
 
 
 # Function to play sound effects
@@ -30,7 +30,7 @@ def play_sound(sound):
 
 
 #answer background
-board_image = Image.open("Level 1/Level 1 image/blackboard.jpeg")
+board_image = Image.open("Level_1/Level 1 image/blackboard.jpeg")
 board_photo = ImageTk.PhotoImage(board_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -62,10 +62,10 @@ animate_text()
 #hints button
 def get_hints(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/minigame2.py'])
+    subprocess.Popen(['python','Level_1/minigame2.py'])
     root.destroy()
    
-get_hints_image1= Image.open("Level 1/Level 1 image/button_hint.png")
+get_hints_image1= Image.open("Level_1/Level 1 image/button_hint.png")
 get_hints_photo1 = ImageTk.PhotoImage(get_hints_image1)
 get_hints_button1 = canvas.create_image(800,400,image=get_hints_photo1)
 canvas.tag_bind(get_hints_button1,"<Button-1>",get_hints)
@@ -75,10 +75,10 @@ canvas.tag_bind(get_hints_button1,"<Button-1>",get_hints)
 
 def back(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/clues.py'])
+    subprocess.Popen(['python','Level_1/clues.py'])
     root.destroy()
    
-back_button_image1 = Image.open("Level 1/Level 1 image/button_back.png")
+back_button_image1 = Image.open("Level_1/Level 1 image/button_back.png")
 back_button_photo1 = ImageTk.PhotoImage(back_button_image1)
 back_button1 = canvas.create_image(400,400,image=back_button_photo1)
 canvas.tag_bind(back_button1,"<Button-1>",back)

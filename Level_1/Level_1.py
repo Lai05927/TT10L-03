@@ -14,13 +14,13 @@ root.state('zoomed')
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
+background_music.play_music("Level_1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
 
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound)
@@ -69,7 +69,7 @@ update_user_level(user_name, 1)
 
 #Main window background
 
-bg_image = Image.open("Level 1/Level 1 image/story 1 background.png")
+bg_image = Image.open("Level_1/Level 1 image/story 1 background.png")
 bg_photo = ImageTk.PhotoImage(bg_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -81,7 +81,7 @@ canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_p
 title_txt = "Level 1 : The Half Bottle of Perfume"
 title_count = 0
 title_text = ""
-title_label = canvas.create_text(600, 100, text=title_txt, font=("Comic Sans MS", 40, "bold"), fill="yellow")
+title_label = canvas.create_text(600, 120, text=title_txt, font=("Comic Sans MS", 40, "bold"), fill="yellow")
 
 
 
@@ -143,10 +143,10 @@ canvas.tag_bind(home_button, "<Button-1>",home)
 
 def question_btn(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/clues.py'])
+    subprocess.Popen(['python','Level_1/clues.py'])
     root.destroy()
    
-question_button_image1 = Image.open("Level 1/Level 1 image/button_question (1).png")
+question_button_image1 = Image.open("Level_1/Level 1 image/button_question (1).png")
 question_photo1 = ImageTk.PhotoImage(question_button_image1)
 question_button1 = canvas.create_image(1100,555,image=question_photo1)
 canvas.tag_bind(question_button1,"<Button-1>",question_btn)
@@ -155,13 +155,57 @@ canvas.tag_bind(question_button1,"<Button-1>",question_btn)
 
 def answer_question(event):
     play_sound(button_click_sound)  
-    subprocess.Popen(['python','Level 1/question.py'])
+    subprocess.Popen(['python','Level_1/question.py'])
     root.destroy()
    
-answer_question_button_image1 = Image.open("Level 1/Level 1 image/button_answer-question.png")
+answer_question_button_image1 = Image.open("Level_1/Level 1 image/button_answer-question.png")
 answer_question_photo1 = ImageTk.PhotoImage(answer_question_button_image1)
 answer_question_button1 = canvas.create_image(1100,640,image=answer_question_photo1)
 canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
+
+
+
+def rules_btn(event):
+    play_sound(button_click_sound)
+    show_rules_popup()
+
+
+rules_button_image1 = Image.open("Level_1/Level 1 image/hints btn.png").resize((55,55))
+rules_photo1 = ImageTk.PhotoImage(rules_button_image1)
+rules_button1 = canvas.create_image(120, 48, image=rules_photo1)
+canvas.tag_bind(rules_button1, "<Button-1>", rules_btn)
+
+
+# Show rules in a popup window
+def show_rules_popup():
+    popup = tk.Toplevel(root)
+    popup.title("Rules Level 1")
+    popup.geometry("530x250")
+    popup.config(bg="Gray")
+
+    rules_text = """
+    1. For level 1, you'll be presented with a short story.
+    2. Click "Question" to get hints.
+    3. Some hints require playing minigames to get hints.
+    4. You can only ask yes or no questions.
+    5. Click "Answer Question" and keep answering MCQ questions.
+    """
+
+    text_widget = tk.Text(popup, font=("Comic Sans MS", 14), bg="gray", fg="white", wrap="word", bd=0)
+    text_widget.insert("1.0", rules_text)
+    text_widget.config(state="disabled")  # Make the text widget read-only
+    text_widget.pack(padx=20, pady=20, fill="both", expand=True)
+
+    close_button = tk.Button(popup, text="Close", command=popup.destroy, bg="gray", fg="white")
+    close_button.pack(pady=10)
+
+# Ensure the rules button uses the updated rules_btn function
+def rules_btn(event):
+    play_sound(button_click_sound)
+    show_rules_popup()
+
+# Bind the rules button click to the updated rules_btn function
+canvas.tag_bind(rules_button1, "<Button-1>", rules_btn)
 
 
 

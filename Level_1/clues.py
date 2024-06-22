@@ -34,7 +34,7 @@ canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=clue
 
 def back(event):
     play_sound(button_click_sound)
-    subprocess.Popen(['python','Level_1/story 7.py'])
+    subprocess.Popen(['python','Level_1/Level_1.py'])
     root.destroy()
 
 back_image = Image.open("Image/Back.png").resize((45,45))
@@ -134,7 +134,7 @@ canvas.tag_bind(answer_question_button1,"<Button-1>",answer_question)
 
 
 
-
+#lockbtn
 lock_image1 = (Image.open("Level_1/Level 1 image/Lock_icon.png")).resize((45,45))
 lock_image_tk1 = ImageTk.PhotoImage(lock_image1)
 lock_button1 = canvas.create_image(screen_width/56, screen_height/3, anchor="nw", image=lock_image_tk1)

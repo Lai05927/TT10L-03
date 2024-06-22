@@ -11,13 +11,13 @@ import pygame
 
 #background music
 import background_music
-background_music.play_music("Level 1/Level 1 image/Sakura-Girl-Motivation-chosic.com_.mp3")
+background_music.play_music("Level_1/Level 1 image/Sakura-Girl-Motivation-chosic.com_.mp3")
 
 
 
 #sound effect
 pygame.mixer.init()
-button_click_sound = pygame.mixer.Sound("Level 1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
+button_click_sound = pygame.mixer.Sound("Level_1/Level 1 image/mixkit-game-ball-tap-2073.wav")# Load sound effects
 
 def play_sound(sound):
     pygame.mixer.Sound.play(sound) # Function to play sound effects
@@ -29,7 +29,7 @@ def play_sound(sound):
 
 
 #answer background
-board_image = Image.open("Level 1/Level 1 image/blank blackboard (1).jpg")
+board_image = Image.open("Level_1/Level 1 image/blank blackboard (1).jpg")
 board_photo = ImageTk.PhotoImage(board_image)
 canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -45,14 +45,14 @@ def handle_button_click(is_correct):
         navigate_to_answer_window3()
     else:
         messagebox.showinfo("Answer", "Wrong Answer,Can't get the hint")
-        subprocess.Popen(["Python","Level 1/clues.py"])
+        subprocess.Popen(["Python","Level_1/clues.py"])
         root.destroy()
 
 
 
 #option1
 
-button_image= ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (3).png"))
+button_image= ImageTk.PhotoImage(Image.open("Level_1/Level 1 image/button (3).png"))
 button=canvas.create_image(450,400, image=button_image)
 canvas.tag_bind(button,"<Button-1>", lambda event:handle_button_click(False))
 
@@ -63,7 +63,7 @@ def show_message(event):
     play_sound(button_click_sound) 
     messagebox.showinfo("answer","ANSWER WRONG")
 
-button_image2=ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (5).png"))
+button_image2=ImageTk.PhotoImage(Image.open("Level_1/Level 1 image/button (5).png"))
 button=canvas.create_image(670,400, image=button_image2)
 canvas.tag_bind(button,"<Button-1>", lambda event:handle_button_click(False))
 
@@ -73,7 +73,7 @@ def show_message(event):
     play_sound(button_click_sound) 
     messagebox.showinfo("answer","ANSWER CORRECT")
 
-button_image3=ImageTk.PhotoImage(Image.open("Level 1/Level 1 image/button (4).png"))
+button_image3=ImageTk.PhotoImage(Image.open("Level_1/Level 1 image/button (4).png"))
 button=canvas.create_image(890,400, image=button_image3)
 canvas.tag_bind(button,"<Button-1>", lambda event:handle_button_click(True))
 
@@ -88,7 +88,7 @@ def show_message(event):
 
 def navigate_to_answer_window3():
     play_sound(button_click_sound) 
-    subprocess.Popen(["python", "Level 1/answer3.py"])
+    subprocess.Popen(["python", "Level_1/answer3.py"])
 
     root.destroy() 
 
