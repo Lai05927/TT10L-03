@@ -27,7 +27,7 @@ def bird_sound():
         messagebox.showerror("Error", f"Cannot play sound: {e}")
 
 # Ensure the script gets a username argument
-user_name = "t"
+user_name = "y"
 
 # Filename where to store user data
 USER_DATA_FILE = 'user_data.json'
@@ -95,6 +95,45 @@ def slider():
         Level_3.after(40, slider)
 
 slider()
+
+def rules_btn(event):
+    show_rules_popup()
+
+
+rules_button_image1 = Image.open("Level_3/Image/hints btn.png").resize((55,55))
+rules_photo1 = ImageTk.PhotoImage(rules_button_image1)
+rules_button1 = canvas.create_image(330/1536*screen_width, 80/864*screen_height, image=rules_photo1)
+canvas.tag_bind(rules_button1, "<Button-1>", rules_btn)
+
+# Show rules in a popup window
+def show_rules_popup():
+    popup = tk.Toplevel(Level_3)
+    popup.title("Rules Level 1")
+    popup.geometry("530x250")
+    popup.config(bg="Gray")
+
+    rules_text = """
+    1. For level 3, you'll be presented with a short story.
+    2. Click character and answer the question in minigame then you will able to get hints.
+    3. Click "back button" and then click "unravel mysteries"
+    4.You can answer the question to solve this mystery.
+    """
+
+    text_widget = tk.Text(popup, font=("Comic Sans MS", 14), bg="gray", fg="white", wrap="word", bd=0)
+    text_widget.insert("1.0", rules_text)
+    text_widget.config(state="disabled")  # Make the text widget read-only
+    text_widget.pack(padx=20, pady=20, fill="both", expand=True)
+
+    close_button = tk.Button(popup, text="Close", command=popup.destroy, bg="gray", fg="white")
+    close_button.pack(pady=10)
+
+# Ensure the rules button uses the updated rules_btn function
+def rules_btn(event):
+    show_rules_popup()
+
+
+# Bind the rules button click to the updated rules_btn function
+canvas.tag_bind(rules_button1, "<Button-1>", rules_btn)
 
 def open_clues_window(event):
     subprocess.Popen(["python", "Level_3/minigame.py"])
