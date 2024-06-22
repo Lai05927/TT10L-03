@@ -87,9 +87,9 @@ texts = [
     "\n Oh! hi,there \n",
     "Welcome to the Night Trail Chronicle",
     "Have you ever heard of a situation puzzle?",
-    "For a situation puzzle, you'll be presented\n with a short story with very little details.",
+    "For level 1, you'll be presented\n with a short story with very little details.",
     
-    "Some levels require to playing minigames to get hints",
+    "Some hints require to playing minigames to get hints",
     "Then, it's up to you to ask questions \nin order to  figure out what's going on.",
     "You can only ask yes or no questions.",
     "For Level 2,you,ll be presented with a scene. ",
