@@ -68,7 +68,7 @@ def login():
         if level_num == 0:
             messagebox.showinfo("Login Successful", f"Welcome {username}! Before we start, let me briefly introduce our game.")
             root.destroy()
-            subprocess.Popen(["python", "Index.py"])
+            subprocess.Popen(["python", "Tutorial/tutorial.py"])
         else:
             messagebox.showinfo("Login Successful", f"Welcome back {username}! You were on level {user_data[username]['level']}.")
             root.destroy()
