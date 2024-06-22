@@ -17,6 +17,37 @@ canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
 canvas.create_image(screen_width/2, screen_height/2, anchor="center", image=bg_photo)
 
+# Show rules in a popup window
+def show_rules_popup(event):
+    popup = tk.Toplevel(root)
+    popup.title("Rules Level 5")
+    popup.geometry("700x350")
+    popup.config(bg="Grey")
+
+    rules_text = """
+    1. For level 5, you are entrusted to solve a case.
+    2. Click the "Note" button at the bottom right corner to get the background of the story.
+    3. In "Note", you are required to play the minigames to get 3 extra hints.
+    4. Explore the "Hall" and "Room" scenes to get more hints.
+    5. When you have all the clues, heading to the "Note" to solve the case.
+
+    Good Luck And Have Fun!
+    """
+
+    text_widget = tk.Text(popup, font=("Comic Sans MS", 14), bg="grey", fg="white", wrap="word", bd=0)
+    text_widget.insert("1.0", rules_text)
+    text_widget.config(state="disabled")  # Make the text widget read-only
+    text_widget.pack(padx=20, pady=20, fill="both", expand=True)
+
+    close_button = tk.Button(popup, text="Close", command=popup.destroy, bg="gray", fg="white")
+    close_button.pack(pady=10)
+
+
+hint_image = (Image.open("Image/hints btn.png")).resize((45,45))
+hint_image_tk = ImageTk.PhotoImage(hint_image)
+hint_button = canvas.create_image(90/1280*screen_width, 30/720*screen_height, image=hint_image_tk)
+canvas.tag_bind(hint_button, "<Button-1>", show_rules_popup)
+
 def home(event):
     if messagebox.askokcancel("Confirm", "Do you want to proceed to the home page? Your progress will not be saved."):
         subprocess.Popen(["python", "Index.py"])
