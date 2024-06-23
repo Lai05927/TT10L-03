@@ -44,11 +44,7 @@ def save_user_data(data):
     with open(USER_DATA_FILE, 'w') as file:
         json.dump(data, file)
 
-# Update user level
-#def update_user_level(username, level):
-#    user_data = load_user_data()
-#    user_data[username]['level'] = level
-#    save_user_data(user_data)
+
 
 def update_user_level(username, level):
     user_data = load_user_data()
