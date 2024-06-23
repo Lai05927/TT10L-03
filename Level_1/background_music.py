@@ -1,4 +1,3 @@
-# background_music.py
 import pygame
 
 # Initialize the Pygame mixer
