@@ -14,6 +14,8 @@ import background_music
 background_music.play_music("Level_1/Level 1 image/mixkit-small-win-2020.wav")
 
 
+
+
 #sound effect
 pygame.mixer.init()
 
