@@ -8,7 +8,7 @@ from tkinter import ttk
 
 # Initialize the main window
 root = tk.Tk()
-root.title("MCQ")
+root.title("Solve the case")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
@@ -85,8 +85,8 @@ def display_question():
         random.shuffle(options)
         question_text.set(q)
         for i, btn in enumerate(option_buttons):
-            btn.config(text=options[i], value=options[i])
-        var.set("")
+            btn.config(text=options[i], value=options[i], state="normal")
+        var.set(None)
     else:
         end_quiz()
 
