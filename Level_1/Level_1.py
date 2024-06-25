@@ -14,7 +14,7 @@ root.state('zoomed')
 
 #background music
 import background_music
-background_music.play_music("Level_1/Level 1 image/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3")
+background_music.play_music("Level_1\Level 1 image\dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
 
 
 
@@ -44,11 +44,7 @@ def save_user_data(data):
     with open(USER_DATA_FILE, 'w') as file:
         json.dump(data, file)
 
-# Update user level
-#def update_user_level(username, level):
-#    user_data = load_user_data()
-#    user_data[username]['level'] = level
-#    save_user_data(user_data)
+
 
 def update_user_level(username, level):
     user_data = load_user_data()

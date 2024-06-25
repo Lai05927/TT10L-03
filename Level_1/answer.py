@@ -8,14 +8,9 @@ screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")
 import pygame
 
-
-#background music
-
 import background_music
 
 background_music.play_music("Level_1/Level 1 image/mixkit-melodic-bonus-collect-1938.wav")
-
-
 
 #sound effect
 pygame.mixer.init()

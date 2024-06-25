@@ -8,7 +8,7 @@ import pygame
 
 #background music
 import background_music
-background_music.play_music("Level_1/Level 1 image/walk-alone-dark-cinematic-music-horror-music-153445.mp3")
+background_music.play_music("Level_1\Level 1 image\dark-ambient-horror-cinematic-halloween-atmosphere-scary-118585.mp3")
 
 
 
