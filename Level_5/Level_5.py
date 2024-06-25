@@ -7,7 +7,7 @@ import json
 import os
 from tkinter import ttk
 root = tk.Tk()
-root.title("Level 1")
+root.title("Level 5")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width}x{screen_height}")

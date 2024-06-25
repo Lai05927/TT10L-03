@@ -112,7 +112,7 @@ def question3():
     ques_text = 'Q3. What did her daughter push?'
     option_image7 = Image.open("Level_1/Level 1 image/button_mirror.png")
     option_image8 = Image.open("Level_1/Level 1 image/button_her-mother.png")
-    option_image9 = Image.open("Level_1/Level 1 image/button_her-mother.png")
+    option_image9 = Image.open("Level_1/Level 1 image/button_herself (2).png")
 
     option_button_photo7 = ImageTk.PhotoImage(option_image7)
     option_button_photo8 = ImageTk.PhotoImage(option_image8)
