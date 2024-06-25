@@ -11,6 +11,11 @@ import pygame
 
 #background music
 import background_music
+# background_music.py
+import pygame
+
+# Initialize the Pygame mixer
+
 
 background_music.play_music("Level_1/Level 1 image/Sakura-Girl-Motivation-chosic.com_.mp3")
 
